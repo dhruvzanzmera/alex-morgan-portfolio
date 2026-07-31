@@ -74,12 +74,74 @@
     box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 20px 40px -16px rgba(13,148,136,0.25);
   }
 
+  .section-anchor {
+    scroll-margin-top: 6rem;
+  }
+
   .skill-icon {
     width: 1.1rem; height: 1.1rem; stroke-width: 1.75;
   }
 
+  .hero-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow::before,
+  .hero-glow::after {
+    content: '';
+    position: absolute;
+    inset: auto;
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: 0.45;
+    pointer-events: none;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero-glow::before {
+    width: 16rem; height: 16rem;
+    background: rgba(13, 148, 136, 0.26);
+    top: -3rem; right: -2rem;
+  }
+
+  .hero-glow::after {
+    width: 14rem; height: 14rem;
+    background: rgba(133, 131, 230, 0.22);
+    bottom: -2rem; left: -2rem;
+    animation-delay: 2s;
+  }
+
+  .glass-panel {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .soft-ring {
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
+
+  .premium-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.78));
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.28);
+  }
+
+  .dark .premium-card {
+    background: linear-gradient(135deg, rgba(15, 20, 32, 0.96), rgba(8, 11, 19, 0.92));
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 20px 45px -28px rgba(0,0,0,0.45);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(8px, -12px, 0) scale(1.06); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .caret::after { animation: none; }
+    .hero-glow::before,
+    .hero-glow::after { animation: none; }
   }
 
   a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
@@ -91,19 +153,30 @@
 </head>
 
 <body class="bg-bg dark:bg-bg-dark text-ink dark:text-ink-dark font-body antialiased transition-colors duration-300">
+<div class="relative overflow-hidden">
+  <div id="scrollProgress" class="fixed top-0 left-0 z-[60] h-1 w-full origin-left scale-x-0 bg-accent transition-transform duration-200"></div>
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute left-[-8%] top-10 h-72 w-72 rounded-full bg-accent/20 blur-[120px]"></div>
+    <div class="absolute right-[-5%] top-28 h-80 w-80 rounded-full bg-violet/20 blur-[140px]"></div>
+  </div>
+
+  <!-- Particle canvas (hero) -->
+  <canvas id="heroParticles" class="pointer-events-none fixed inset-0 -z-10"></canvas>
 
 <!-- ============ NAV ============ -->
 <header class="fixed top-0 inset-x-0 z-50 border-b border-line dark:border-line-dark bg-bg/80 dark:bg-bg-dark/80 backdrop-blur-md">
-  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#home" class="font-display font-semibold text-lg tracking-tight">
+  <nav class="max-w-6xl mx-auto px-6 py-3 min-h-16 flex items-center justify-between gap-4">
+    <a href="#home" class="font-display font-semibold text-lg tracking-tight whitespace-nowrap">
       alex<span class="text-accent">.</span>morgan
     </a>
 
-    <div class="hidden md:flex items-center gap-8 font-mono text-[13px] text-muted dark:text-muted-dark">
+    <div class="hidden md:flex items-center gap-4 lg:gap-6 font-mono text-[12px] lg:text-[13px] text-muted dark:text-muted-dark">
       <a href="#about" class="hover:text-ink dark:hover:text-ink-dark transition-colors">01 / about</a>
-      <a href="#skills" class="hover:text-ink dark:hover:text-ink-dark transition-colors">02 / skills</a>
-      <a href="#projects" class="hover:text-ink dark:hover:text-ink-dark transition-colors">03 / projects</a>
-      <a href="#contact" class="hover:text-ink dark:hover:text-ink-dark transition-colors">04 / contact</a>
+      <a href="#services" class="hover:text-ink dark:hover:text-ink-dark transition-colors">02 / services</a>
+      <a href="#skills" class="hover:text-ink dark:hover:text-ink-dark transition-colors">03 / skills</a>
+      <a href="#journey" class="hover:text-ink dark:hover:text-ink-dark transition-colors">04 / journey</a>
+      <a href="#projects" class="hover:text-ink dark:hover:text-ink-dark transition-colors">05 / projects</a>
+      <a href="#contact" class="hover:text-ink dark:hover:text-ink-dark transition-colors">06 / contact</a>
     </div>
 
     <div class="flex items-center gap-3">
@@ -119,58 +192,89 @@
 
   <div id="mobileMenu" class="hidden md:hidden border-t border-line dark:border-line-dark px-6 py-4 flex flex-col gap-4 font-mono text-sm bg-bg dark:bg-bg-dark">
     <a href="#about">01 / about</a>
-    <a href="#skills">02 / skills</a>
-    <a href="#projects">03 / projects</a>
-    <a href="#contact">04 / contact</a>
+    <a href="#services">02 / services</a>
+    <a href="#skills">03 / skills</a>
+    <a href="#journey">04 / journey</a>
+    <a href="#projects">05 / projects</a>
+    <a href="#contact">06 / contact</a>
   </div>
 </header>
 
 <!-- ============ 1. HERO ============ -->
-<section id="home" class="glow pt-32 pb-20 md:pt-40 md:pb-28 px-6">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+<section id="home" class="hero-glow glow pt-32 pb-24 md:pt-40 md:pb-32 px-6">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
 
     <div data-aos="fade-up">
-      <p class="font-mono text-sm text-accent mb-4">// hello, world</p>
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight">
-        I build interfaces<br class="hidden sm:block" /> that feel <span class="text-accent">inevitable</span>.
+      <div class="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1.5 text-xs font-mono text-accent soft-ring">
+        <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+        Available for select product launches
+      </div>
+      <p class="font-mono text-sm text-accent mt-5">// senior frontend engineer</p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] tracking-tight">
+        I craft premium web experiences that feel <span id="typed" class="text-accent caret"></span>
       </h1>
-      <p class="mt-6 text-muted dark:text-muted-dark text-lg max-w-md leading-relaxed font-light">
-        Alex Morgan — frontend developer focused on fast, accessible products.
-        Four years turning designs into interfaces people don't have to think about.
+      <p class="mt-6 text-muted dark:text-muted-dark text-lg max-w-xl leading-relaxed font-light">
+        I build polished interfaces for startups and product teams that need more than just good looks — thoughtful UX, refined motion, and production-ready engineering.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-4">
-        <a href="#projects" class="px-5 py-3 rounded-lg bg-accent text-white font-medium text-sm shadow-soft hover:bg-accent-light transition-colors">
-          View projects
+        <a href="#projects" class="px-5 py-3 rounded-lg bg-accent text-white font-medium text-sm shadow-soft hover:bg-accent-light transition-all duration-300 hover:-translate-y-0.5">
+          View selected work
         </a>
-        <a href="#contact" class="px-5 py-3 rounded-lg border border-line dark:border-line-dark font-medium text-sm hover:border-accent transition-colors">
-          Get in touch
+        <a href="#contact" class="px-5 py-3 rounded-lg border border-line dark:border-line-dark font-medium text-sm hover:border-accent transition-all duration-300 hover:-translate-y-0.5">
+          Let’s talk
         </a>
       </div>
 
-      <div class="mt-10 flex items-center gap-3 font-mono text-xs text-muted dark:text-muted-dark">
-        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        Open to new roles · based in Ahmedabad, IN
+      <div class="mt-6 flex flex-wrap gap-3 font-mono text-xs text-muted dark:text-muted-dark">
+        <span class="rounded-full border border-line dark:border-line-dark px-3 py-1.5">React</span>
+        <span class="rounded-full border border-line dark:border-line-dark px-3 py-1.5">Next.js</span>
+        <span class="rounded-full border border-line dark:border-line-dark px-3 py-1.5">Accessibility</span>
+        <span class="rounded-full border border-line dark:border-line-dark px-3 py-1.5">Performance</span>
+      </div>
+
+      <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-xl">
+        <div class="rounded-2xl border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
+          <p class="text-2xl font-display font-semibold text-ink dark:text-ink-dark">4+</p>
+          <p class="text-xs font-mono text-muted dark:text-muted-dark mt-1">years building</p>
+        </div>
+        <div class="rounded-2xl border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
+          <p class="text-2xl font-display font-semibold text-ink dark:text-ink-dark">30+</p>
+          <p class="text-xs font-mono text-muted dark:text-muted-dark mt-1">launches shipped</p>
+        </div>
+        <div class="rounded-2xl border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
+          <p class="text-2xl font-display font-semibold text-ink dark:text-ink-dark">12</p>
+          <p class="text-xs font-mono text-muted dark:text-muted-dark mt-1">teams partnered</p>
+        </div>
       </div>
     </div>
 
-    <!-- Signature element: code editor mock -->
-    <div data-aos="fade-left" data-aos-delay="150" class="rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark shadow-soft dark:shadow-softDark overflow-hidden">
-      <div class="flex items-center gap-2 px-4 py-3 border-b border-line dark:border-line-dark bg-slate-50 dark:bg-white/[0.03]">
-        <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
-        <span class="w-3 h-3 rounded-full bg-amber/80"></span>
-        <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
-        <span class="ml-3 font-mono text-xs text-muted dark:text-muted-dark">about-me.js</span>
-      </div>
-      <pre class="font-mono text-[13px] sm:text-sm leading-7 p-5 overflow-x-auto"><code><span class="text-violet">const</span> <span class="text-ink dark:text-ink-dark">developer</span> = {
-  <span class="text-accent">name</span>: <span class="text-amber">'Alex Morgan'</span>,
-  <span class="text-accent">role</span>: <span class="text-amber">'Frontend Developer'</span>,
-  <span class="text-accent">focus</span>: [<span class="text-amber">'React'</span>, <span class="text-amber">'a11y'</span>, <span class="text-amber">'performance'</span>],
-  <span class="text-accent">stack</span>: [<span class="text-amber">'JS'</span>, <span class="text-amber">'TS'</span>, <span class="text-amber">'Tailwind'</span>],
-  <span class="text-accent">available</span>: <span class="text-violet">true</span>,
-};
+    <div data-aos="fade-left" data-aos-delay="150" class="premium-card rounded-[28px] p-4 sm:p-6">
+      <div class="rounded-[24px] border border-line dark:border-line-dark bg-surface/80 dark:bg-surface-dark/80 p-5 sm:p-6">
+        <div class="flex items-center gap-4">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Portrait of Alex Morgan" class="h-16 w-16 rounded-2xl object-cover ring-2 ring-accent/20" loading="lazy" />
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">Available now</p>
+            <h2 class="font-display text-xl font-semibold">Alex Morgan</h2>
+            <p class="text-sm text-muted dark:text-muted-dark">Frontend engineer · product-focused · detail-obsessed</p>
+          </div>
+        </div>
 
-<span class="text-muted dark:text-muted-dark">// currently shipping delightful UI</span><span class="caret"></span></code></pre>
+        <div class="mt-6 grid gap-3">
+          <div class="rounded-2xl border border-line dark:border-line-dark p-4">
+            <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-muted dark:text-muted-dark">Core strengths</p>
+            <p class="mt-1 text-sm font-semibold text-ink dark:text-ink-dark">Design systems, motion, performance, accessibility</p>
+          </div>
+          <div class="rounded-2xl border border-line dark:border-line-dark p-4">
+            <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-muted dark:text-muted-dark">Current focus</p>
+            <p class="mt-1 text-sm font-semibold text-ink dark:text-ink-dark">Building fast, elegant product experiences for modern teams</p>
+          </div>
+          <div class="rounded-2xl border border-line dark:border-line-dark p-4">
+            <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-muted dark:text-muted-dark">Location</p>
+            <p class="mt-1 text-sm font-semibold text-ink dark:text-ink-dark">Based in Ahmedabad, India · Remote-friendly</p>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -178,42 +282,173 @@
 
 <!-- ============ 2. ABOUT ============ -->
 <section id="about" class="py-24 px-6 border-t border-line dark:border-line-dark">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.4fr] gap-12">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12">
 
     <div data-aos="fade-right">
       <p class="font-mono text-sm text-accent mb-3">01 / about</p>
-      <h2 class="font-display text-3xl font-semibold tracking-tight">The short version</h2>
+      <h2 class="font-display text-3xl font-semibold tracking-tight">A calm, detail-driven engineer who turns product ambition into refined interfaces.</h2>
+      <p class="mt-5 text-muted dark:text-muted-dark leading-relaxed font-light">
+        I care about the invisible work that makes products feel premium: spacing, motion, accessibility, and performance that quietly elevates the whole experience.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <span class="rounded-full border border-line dark:border-line-dark px-3 py-1.5 text-xs font-mono text-muted dark:text-muted-dark">Product-minded</span>
+        <span class="rounded-full border border-line dark:border-line-dark px-3 py-1.5 text-xs font-mono text-muted dark:text-muted-dark">Design-systems aware</span>
+        <span class="rounded-full border border-line dark:border-line-dark px-3 py-1.5 text-xs font-mono text-muted dark:text-muted-dark">Performance-first</span>
+      </div>
     </div>
 
-    <div data-aos="fade-up" data-aos-delay="100" class="space-y-5 text-muted dark:text-muted-dark leading-relaxed font-light">
-      <p>
-        I'm a frontend developer who cares about the details most people never notice —
-        the 60fps scroll, the focus ring that actually shows up, the layout that doesn't
-        jump while a font loads. Good interfaces are mostly invisible work.
-      </p>
-      <p>
-        Over the last four years I've worked with startups and product teams to turn
-        Figma files into interfaces that hold up: responsive across devices, accessible
-        by default, and fast enough that users never notice they're waiting.
-      </p>
-      <p>
-        Outside of work, I write about frontend performance, contribute to a couple of
-        small open-source component libraries, and I'm slowly rebuilding this site every
-        time I learn something worth showing off.
-      </p>
+    <div data-aos="fade-up" data-aos-delay="100" class="space-y-4">
+      <div class="rounded-3xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
+          Over the last four years I’ve helped startups and product teams turn ideas into fast, accessible, and visually compelling interfaces that people actually enjoy using.
+        </p>
+      </div>
 
-      <div class="flex flex-wrap gap-x-10 gap-y-4 pt-4 font-mono text-sm">
-        <div><span class="text-2xl font-display font-semibold text-ink dark:text-ink-dark">4+</span><br/>years experience</div>
-        <div><span class="text-2xl font-display font-semibold text-ink dark:text-ink-dark">30+</span><br/>projects shipped</div>
-        <div><span class="text-2xl font-display font-semibold text-ink dark:text-ink-dark">12</span><br/>teams collaborated with</div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-line dark:border-line-dark bg-slate-50/70 dark:bg-white/[0.03] p-5">
+          <p class="text-3xl font-display font-semibold text-ink dark:text-ink-dark" data-counter data-target="4" data-suffix="+">0</p>
+          <p class="text-xs font-mono text-muted dark:text-muted-dark mt-1">years experience</p>
+        </div>
+        <div class="rounded-2xl border border-line dark:border-line-dark bg-slate-50/70 dark:bg-white/[0.03] p-5">
+          <p class="text-3xl font-display font-semibold text-ink dark:text-ink-dark" data-counter data-target="30" data-suffix="+">0</p>
+          <p class="text-xs font-mono text-muted dark:text-muted-dark mt-1">projects launched</p>
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-line dark:border-line-dark bg-gradient-to-br from-accent/10 to-violet/10 p-6">
+        <p class="text-sm leading-relaxed text-muted dark:text-muted-dark font-light">
+          “The best interfaces feel obvious. I focus on making that feeling real through clear structure, thoughtful motion, and reliable implementation.”
+        </p>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ============ 3. SKILLS ============ -->
-<section id="skills" class="py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
+<!-- ============ 3. SERVICES ============ -->
+<section id="services" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
+  <div class="max-w-6xl mx-auto">
+    <p class="font-mono text-sm text-accent mb-3" data-aos="fade-up">02 / services</p>
+    <h2 class="font-display text-3xl font-semibold tracking-tight mb-12" data-aos="fade-up">What I help teams ship</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <article data-aos="fade-up" class="card-lift rounded-2xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
+        <div class="w-12 h-12 rounded-2xl bg-accent/10 text-accent grid place-items-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M7 3v4M17 3v4M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Design systems</h3>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Scalable UI foundations with thoughtful tokens, components, and accessibility baked in from day one.</p>
+      </article>
+
+      <article data-aos="fade-up" data-aos-delay="100" class="card-lift rounded-2xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
+        <div class="w-12 h-12 rounded-2xl bg-violet/10 text-violet grid place-items-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15l6-6 3 3 7-8"/><path d="M20 4h-5"/><path d="M20 4v5"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Frontend engineering</h3>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Fast-moving product interfaces built with React, Next.js, and performance-first architecture.</p>
+      </article>
+
+      <article data-aos="fade-up" data-aos-delay="200" class="card-lift rounded-2xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
+        <div class="w-12 h-12 rounded-2xl bg-amber/10 text-amber grid place-items-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M7 8l5-5 5 5"/><path d="M7 16l5 5 5-5"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Performance &amp; accessibility</h3>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Polished experiences that feel instant, work beautifully on every device, and stay inclusive by default.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. JOURNEY ============ -->
+<section id="journey" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.8fr_1.2fr] gap-12">
+    <div data-aos="fade-right">
+      <p class="font-mono text-sm text-accent mb-3">03 / journey</p>
+      <h2 class="font-display text-3xl font-semibold tracking-tight mb-4">A product-minded developer with shipping experience</h2>
+      <p class="text-muted dark:text-muted-dark leading-relaxed font-light">I’ve worked across startup and scale-up teams, translating product goals into clear interfaces and reliable frontend systems.</p>
+    </div>
+
+    <div class="space-y-4" data-aos="fade-up">
+      <div class="rounded-2xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+          <div>
+            <p class="font-mono text-xs text-accent">2022 — Present</p>
+            <h3 class="font-display font-semibold text-lg">Senior Frontend Developer · Northstar Labs</h3>
+          </div>
+          <span class="px-3 py-1 rounded-full border border-line dark:border-line-dark text-xs font-mono">Full-time</span>
+        </div>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Leading UI implementation for a B2B analytics platform with an emphasis on design consistency, motion, and reduce churn.</p>
+      </div>
+
+      <div class="rounded-2xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+          <div>
+            <p class="font-mono text-xs text-accent">2019 — 2022</p>
+            <h3 class="font-display font-semibold text-lg">Frontend Developer · Studio North</h3>
+          </div>
+          <span class="px-3 py-1 rounded-full border border-line dark:border-line-dark text-xs font-mono">Product team</span>
+        </div>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Shipped campaigns, e-commerce experiences, and conversion-focused landing pages with a strong focus on speed and clarity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. APPROACH ============ -->
+<section id="approach" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-start">
+    <div data-aos="fade-up" class="rounded-[28px] border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8">
+      <p class="font-mono text-sm text-accent mb-3">04 / approach</p>
+      <h2 class="font-display text-3xl font-semibold tracking-tight">A thoughtful process that keeps quality high without slowing delivery.</h2>
+      <p class="mt-5 text-muted dark:text-muted-dark leading-relaxed font-light">
+        I work closely with designers, founders, and product teams to move from concept to launch with clarity — keeping the experience elegant while staying grounded in real-world constraints.
+      </p>
+      <div class="mt-6 grid sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-line dark:border-line-dark p-4">
+          <h3 class="font-display font-semibold">1. Align</h3>
+          <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light">Clarify the user need, business goal, and product constraints early.</p>
+        </div>
+        <div class="rounded-2xl border border-line dark:border-line-dark p-4">
+          <h3 class="font-display font-semibold">2. Build</h3>
+          <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light">Create resilient UI foundations with strong interaction details and accessibility.</p>
+        </div>
+        <div class="rounded-2xl border border-line dark:border-line-dark p-4">
+          <h3 class="font-display font-semibold">3. Refine</h3>
+          <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light">Tighten motion, responsiveness, and clarity through iteration and feedback.</p>
+        </div>
+        <div class="rounded-2xl border border-line dark:border-line-dark p-4">
+          <h3 class="font-display font-semibold">4. Launch</h3>
+          <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light">Ship with confidence, knowing the experience is robust and ready to grow.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="120" class="rounded-[28px] border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8">
+      <p class="font-mono text-sm text-accent mb-3">Selected impact</p>
+      <div class="space-y-4 mt-4">
+        <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
+          <span class="text-sm text-muted dark:text-muted-dark">Faster load times</span>
+          <span class="font-display font-semibold text-ink dark:text-ink-dark">30–50%</span>
+        </div>
+        <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
+          <span class="text-sm text-muted dark:text-muted-dark">Accessibility coverage</span>
+          <span class="font-display font-semibold text-ink dark:text-ink-dark">WCAG-ready</span>
+        </div>
+        <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
+          <span class="text-sm text-muted dark:text-muted-dark">Design consistency</span>
+          <span class="font-display font-semibold text-ink dark:text-ink-dark">Systemized</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-muted dark:text-muted-dark">Cross-team collaboration</span>
+          <span class="font-display font-semibold text-ink dark:text-ink-dark">High-trust</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. SKILLS ============ -->
+<section id="skills" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
   <div class="max-w-6xl mx-auto">
     <p class="font-mono text-sm text-accent mb-3" data-aos="fade-up">02 / skills</p>
     <h2 class="font-display text-3xl font-semibold tracking-tight mb-12" data-aos="fade-up">What I work with</h2>
@@ -299,24 +534,23 @@
   </div>
 </section>
 
-<!-- ============ 4. PROJECTS ============ -->
-<section id="projects" class="py-24 px-6 border-t border-line dark:border-line-dark">
+<!-- ============ 6. PROJECTS ============ -->
+<section id="projects" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
   <div class="max-w-6xl mx-auto">
-    <p class="font-mono text-sm text-accent mb-3" data-aos="fade-up">03 / projects</p>
+    <p class="font-mono text-sm text-accent mb-3" data-aos="fade-up">05 / projects</p>
     <h2 class="font-display text-3xl font-semibold tracking-tight mb-12" data-aos="fade-up">Selected work</h2>
 
     <div class="grid md:grid-cols-2 gap-6">
 
-      <article data-aos="zoom-in" data-aos-delay="0" class="card-lift group rounded-xl border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
-        <div class="h-40 bg-gradient-to-br from-accent/20 to-violet/20 flex items-center justify-center">
-          <span class="font-mono text-xs text-muted dark:text-muted-dark">01</span>
+      <article data-aos="zoom-in" data-aos-delay="0" class="card-lift group rounded-2xl border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
+        <div class="relative h-56 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Analytics dashboard interface on a laptop screen" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] text-white backdrop-blur">Fintech Dashboard</span>
         </div>
         <div class="p-6">
           <h3 class="font-display font-semibold text-lg mb-2">Fintech Dashboard</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">
-            A real-time analytics dashboard for a payments startup, rebuilt from a legacy
-            jQuery app into a fast, componentised React interface.
-          </p>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">A real-time analytics dashboard for a payments startup, rebuilt from a legacy stack into a fast, componentized React experience.</p>
           <div class="flex flex-wrap gap-2 font-mono text-xs text-muted dark:text-muted-dark mb-4">
             <span>React</span><span>·</span><span>TypeScript</span><span>·</span><span>D3.js</span>
           </div>
@@ -324,16 +558,15 @@
         </div>
       </article>
 
-      <article data-aos="zoom-in" data-aos-delay="100" class="card-lift group rounded-xl border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
-        <div class="h-40 bg-gradient-to-br from-amber/20 to-accent/20 flex items-center justify-center">
-          <span class="font-mono text-xs text-muted dark:text-muted-dark">02</span>
+      <article data-aos="zoom-in" data-aos-delay="100" class="card-lift group rounded-2xl border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
+        <div class="relative h-56 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80" alt="Modern e-commerce storefront on a device" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] text-white backdrop-blur">Commerce Storefront</span>
         </div>
         <div class="p-6">
           <h3 class="font-display font-semibold text-lg mb-2">Commerce Storefront</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">
-            Headless storefront built on Next.js, focused on Core Web Vitals — shipped a
-            40% improvement in load time over the previous platform.
-          </p>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">Headless storefront built on Next.js with conversion-focused UX and a sharp lift in Core Web Vitals and page speed.</p>
           <div class="flex flex-wrap gap-2 font-mono text-xs text-muted dark:text-muted-dark mb-4">
             <span>Next.js</span><span>·</span><span>Tailwind</span><span>·</span><span>Shopify</span>
           </div>
@@ -341,16 +574,15 @@
         </div>
       </article>
 
-      <article data-aos="zoom-in" data-aos-delay="0" class="card-lift group rounded-xl border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
-        <div class="h-40 bg-gradient-to-br from-violet/20 to-amber/20 flex items-center justify-center">
-          <span class="font-mono text-xs text-muted dark:text-muted-dark">03</span>
+      <article data-aos="zoom-in" data-aos-delay="0" class="card-lift group rounded-2xl border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
+        <div class="relative h-56 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Design system components displayed in a clean workspace" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] text-white backdrop-blur">Component Library</span>
         </div>
         <div class="p-6">
           <h3 class="font-display font-semibold text-lg mb-2">Component Library</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">
-            An open-source, accessible React component library with full keyboard
-            support, documented in Storybook and used across three product teams.
-          </p>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">An open-source, accessible React component library documented in Storybook and adopted across multiple product teams.</p>
           <div class="flex flex-wrap gap-2 font-mono text-xs text-muted dark:text-muted-dark mb-4">
             <span>React</span><span>·</span><span>Radix</span><span>·</span><span>Storybook</span>
           </div>
@@ -358,16 +590,15 @@
         </div>
       </article>
 
-      <article data-aos="zoom-in" data-aos-delay="100" class="card-lift group rounded-xl border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
-        <div class="h-40 bg-gradient-to-br from-accent/20 to-amber/20 flex items-center justify-center">
-          <span class="font-mono text-xs text-muted dark:text-muted-dark">04</span>
+      <article data-aos="zoom-in" data-aos-delay="100" class="card-lift group rounded-2xl border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
+        <div class="relative h-56 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="Developer workspace with screens and interface prototypes" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] text-white backdrop-blur">Booking Platform</span>
         </div>
         <div class="p-6">
           <h3 class="font-display font-semibold text-lg mb-2">Booking Platform</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">
-            A multi-step booking flow with optimistic UI updates and offline support,
-            built for a travel platform serving 200k monthly users.
-          </p>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">A multi-step booking flow with optimistic UI updates and offline support, built for a travel platform serving hundreds of thousands of users.</p>
           <div class="flex flex-wrap gap-2 font-mono text-xs text-muted dark:text-muted-dark mb-4">
             <span>Vue</span><span>·</span><span>Pinia</span><span>·</span><span>PWA</span>
           </div>
@@ -379,22 +610,21 @@
   </div>
 </section>
 
-<!-- ============ 5. CONTACT ============ -->
-<section id="contact" class="py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
+<!-- ============ 7. CONTACT ============ -->
+<section id="contact" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
   <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.4fr] gap-12">
 
     <div data-aos="fade-right">
-      <p class="font-mono text-sm text-accent mb-3">04 / contact</p>
-      <h2 class="font-display text-3xl font-semibold tracking-tight mb-4">Let's build something</h2>
+      <p class="font-mono text-sm text-accent mb-3">06 / contact</p>
+      <h2 class="font-display text-3xl font-semibold tracking-tight mb-4">Let’s build something memorable.</h2>
       <p class="text-muted dark:text-muted-dark leading-relaxed mb-6 font-light">
-        Have a project, a role, or just a frontend problem worth discussing?
-        My inbox is open.
+        Whether you need a polished product launch, a design system, or a frontend partner to elevate an existing experience, I’d love to help.
       </p>
       <div class="space-y-3 font-mono text-sm">
         <a href="mailto:alex.morgan@example.com" class="flex items-center gap-2 hover:text-accent transition-colors">
           alex.morgan@example.com
         </a>
-        <div class="flex gap-4 pt-2">
+        <div class="flex flex-wrap gap-4 pt-2">
           <a href="#" class="hover:text-accent transition-colors">GitHub</a>
           <a href="#" class="hover:text-accent transition-colors">LinkedIn</a>
           <a href="#" class="hover:text-accent transition-colors">Twitter</a>
@@ -402,30 +632,32 @@
       </div>
     </div>
 
-    <form data-aos="fade-up" data-aos-delay="100" class="grid gap-4" onsubmit="return handleContactSubmit(event)">
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label for="name" class="block font-mono text-xs text-muted dark:text-muted-dark mb-2">Name</label>
-          <input id="name" name="name" type="text" required
-            class="w-full px-4 py-3 rounded-lg border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors" />
+    <div data-aos="fade-up" data-aos-delay="100" class="rounded-[28px] border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6 sm:p-8">
+      <form class="grid gap-4" onsubmit="return handleContactSubmit(event)">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="name" class="block font-mono text-xs text-muted dark:text-muted-dark mb-2">Name</label>
+            <input id="name" name="name" type="text" required
+              class="w-full px-4 py-3 rounded-lg border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors" />
+          </div>
+          <div>
+            <label for="email" class="block font-mono text-xs text-muted dark:text-muted-dark mb-2">Email</label>
+            <input id="email" name="email" type="email" required
+              class="w-full px-4 py-3 rounded-lg border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors" />
+          </div>
         </div>
         <div>
-          <label for="email" class="block font-mono text-xs text-muted dark:text-muted-dark mb-2">Email</label>
-          <input id="email" name="email" type="email" required
-            class="w-full px-4 py-3 rounded-lg border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors" />
+          <label for="message" class="block font-mono text-xs text-muted dark:text-muted-dark mb-2">Message</label>
+          <textarea id="message" name="message" rows="4" required
+            class="w-full px-4 py-3 rounded-lg border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors resize-none"></textarea>
         </div>
-      </div>
-      <div>
-        <label for="message" class="block font-mono text-xs text-muted dark:text-muted-dark mb-2">Message</label>
-        <textarea id="message" name="message" rows="4" required
-          class="w-full px-4 py-3 rounded-lg border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors resize-none"></textarea>
-      </div>
-      <button type="submit"
-        class="justify-self-start px-6 py-3 rounded-lg bg-accent text-white font-medium text-sm shadow-soft hover:bg-accent-light transition-colors">
-        Send message
-      </button>
-      <p id="formNote" class="text-xs text-muted dark:text-muted-dark hidden">Thanks — this opens your email client to send the message.</p>
-    </form>
+        <button type="submit"
+          class="justify-self-start px-6 py-3 rounded-lg bg-accent text-white font-medium text-sm shadow-soft hover:bg-accent-light transition-colors">
+          Send message
+        </button>
+        <p id="formNote" class="text-xs text-muted dark:text-muted-dark hidden">Thanks — this opens your email client to send the message.</p>
+      </form>
+    </div>
 
   </div>
 </section>
@@ -440,6 +672,12 @@
 
 <!-- AOS script -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-LmQG3Jm3t8Qjq1v6a2O7KqJ3fTjGv7r8wQ+4TnG1QX3gQ6x2Q0zKf6f9Q5y6p4ZPq0F6y1b9v7Q2b6Z3k1L/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-r2m9Q9m9Jx9Q1s3kY5h1jK9b6W0c5V9g3p1Q0v2L9k1M5n8G2p3Q7j6S5p1L2Q6w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Vanilla-tilt (card tilt) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 <script>
   AOS.init({
     duration: 700,
@@ -450,6 +688,40 @@
 
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll progress
+  const progressBar = document.getElementById('scrollProgress');
+  const updateProgress = () => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+    progressBar.style.transform = `scaleX(${Math.min(Math.max(ratio, 0), 1)})`;
+  };
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  // Animated counters
+  const counters = document.querySelectorAll('[data-counter]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = Number(el.dataset.target || 0);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1000;
+      const start = performance.now();
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        el.textContent = `${value}${suffix}`;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.7 });
+  counters.forEach((counter) => counterObserver.observe(counter));
 
   // Theme toggle (in-memory + intentional default, no storage APIs)
   const root = document.documentElement;
@@ -487,6 +759,126 @@
     document.getElementById('formNote').classList.remove('hidden');
     return false;
   }
+
+  // ---- Typed headline (vanilla) ----
+  (function() {
+    const phrases = [
+      'effortless',
+      'fast',
+      'unmistakably modern',
+      'delightfully animated'
+    ];
+    const el = document.getElementById('typed');
+    if (!el) return;
+    let idx = 0; let char = 0; let forward = true; let delay = 80;
+    function tick() {
+      const phrase = phrases[idx];
+      if (forward) {
+        el.textContent = phrase.slice(0, ++char);
+        if (char === phrase.length) { forward = false; setTimeout(tick, 900); return; }
+      } else {
+        el.textContent = phrase.slice(0, --char);
+        if (char === 0) { forward = true; idx = (idx + 1) % phrases.length; setTimeout(tick, 200); return; }
+      }
+      setTimeout(tick, delay);
+    }
+    // Respect reduced motion
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq && mq.matches) { el.textContent = phrases[0]; return; }
+    tick();
+  })();
+
+  // ---- Hero particles (lightweight) ----
+  (function() {
+    const canvas = document.getElementById('heroParticles');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = innerWidth;
+    let h = canvas.height = innerHeight;
+    const particles = [];
+    const count = Math.round(Math.min(80, Math.max(24, w / 18)));
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function make() {
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: rand(0, w),
+          y: rand(0, h),
+          r: rand(0.6, 2.6),
+          vx: rand(-0.15, 0.15),
+          vy: rand(-0.05, 0.05),
+          hue: rand(150, 270),
+          alpha: rand(0.06, 0.22)
+        });
+      }
+    }
+
+    function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
+    window.addEventListener('resize', resize);
+
+    function draw() {
+      ctx.clearRect(0,0,w,h);
+      for (const p of particles) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -10) p.x = w + 10; if (p.x > w + 10) p.x = -10;
+        if (p.y < -10) p.y = h + 10; if (p.y > h + 10) p.y = -10;
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${p.hue},70%,60%,${p.alpha})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+
+    // Reduced motion fallback
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq && mq.matches) return;
+
+    make(); draw();
+  })();
+
+  // ---- GSAP scroll animations ----
+  (function() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade-up sections with stagger
+    gsap.utils.toArray('[data-aos]').forEach((el) => {
+      const animation = el.getAttribute('data-aos') || 'fade-up';
+      const delay = Number(el.getAttribute('data-aos-delay') || 0) / 1000;
+      gsap.from(el, {
+        y: animation.includes('up') ? 18 : 0,
+        x: animation.includes('left') ? -18 : animation.includes('right') ? 18 : 0,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        delay,
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+      });
+    });
+
+    // Projects subtle parallax
+    gsap.to('.card-lift img', {
+      scale: 1.06,
+      paused: true,
+      scrollTrigger: {
+        trigger: '.card-lift',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 0.6,
+      },
+      onUpdate() {},
+      ease: 'none'
+    });
+  })();
+
+  // ---- VanillaTilt on card-lift ----
+  (function() {
+    const nodes = document.querySelectorAll('.card-lift');
+    if (!nodes.length || typeof VanillaTilt === 'undefined') return;
+    nodes.forEach(n => VanillaTilt.init(n, { max: 8, speed: 400, glare: false, scale: 1.01 }));
+  })();
 </script>
 
 </body>
