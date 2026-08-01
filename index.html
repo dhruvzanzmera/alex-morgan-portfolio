@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
 <meta charset="UTF-8" />
@@ -45,7 +45,13 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  body { -webkit-font-smoothing: antialiased; }
+  body { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+  #typed {
+    display: inline-block;
+    min-width: 18ch;
+    white-space: nowrap;
+  }
 
   .caret::after {
     content: '';
@@ -699,6 +705,22 @@
   };
   updateProgress();
   window.addEventListener('scroll', updateProgress, { passive: true });
+
+  const smoothScroll = (href) => {
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#') && href.length > 1) {
+        event.preventDefault();
+        smoothScroll(href);
+      }
+    });
+  });
 
   // Animated counters
   const counters = document.querySelectorAll('[data-counter]');
