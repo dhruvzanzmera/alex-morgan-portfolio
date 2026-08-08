@@ -20,11 +20,11 @@
     theme: {
       extend: {
         colors: {
-          bg: { DEFAULT: '#f8fafc', dark: '#080b13' },
-          surface: { DEFAULT: '#ffffff', dark: '#0f1420' },
-          ink: { DEFAULT: '#0f172a', dark: '#e9ecf3' },
-          muted: { DEFAULT: '#5b6472', dark: '#8b93a7' },
-          line: { DEFAULT: '#e6eaf0', dark: '#1c2434' },
+          bg: { DEFAULT: '#f8f7f2', dark: '#000000' },
+          surface: { DEFAULT: '#ffffff', dark: '#0a0a0a' },
+          ink: { DEFAULT: '#0f172a', dark: '#f5f5f5' },
+          muted: { DEFAULT: '#5b6472', dark: '#9aa8b6' },
+          line: { DEFAULT: '#e6eaf0', dark: '#111827' },
           accent: { DEFAULT: '#0d9488', light: '#2dd4bf' },
           amber: '#e2a53a',
           violet: '#8583e6',
@@ -281,9 +281,21 @@
     </div>
 
     <div class="flex items-center gap-3">
-      <button id="themeToggle" aria-label="Toggle dark mode" class="w-9 h-9 grid place-items-center  border border-line dark:border-line-dark hover:border-accent transition-colors">
-        <svg id="iconSun" class="hidden w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg id="iconMoon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      <button id="themeToggle" aria-label="Toggle dark mode" class="w-9 h-9 grid place-items-center border border-line dark:border-line-dark hover:border-accent transition-colors">
+        <svg id="iconSun" class="hidden w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <path d="M12 1v2" />
+          <path d="M12 21v2" />
+          <path d="M4.22 4.22l1.42 1.42" />
+          <path d="M18.36 18.36l1.42 1.42" />
+          <path d="M1 12h2" />
+          <path d="M21 12h2" />
+          <path d="M4.22 19.78l1.42-1.42" />
+          <path d="M18.36 5.64l1.42-1.42" />
+        </svg>
+        <svg id="iconMoon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 0111.21 3a7 7 0 000 14A9 9 0 0121 12.79z" />
+        </svg>
       </button>
       <button id="menuToggle" class="md:hidden w-9 h-9 grid place-items-center" aria-label="Open menu">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -320,23 +332,23 @@
         I deliver elegant frontend experiences backed by scalable server architecture, APIs, and deployment-ready systems.
       </p>
 
-      <div class="mt-8 flex flex-wrap gap-4">
+      <div class="mt-8 flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="160">
         <a href="#projects" class="px-5 py-3  bg-accent text-white font-medium text-sm shadow-soft hover:bg-accent-light transition-all duration-300 hover:-translate-y-0.5">
           View selected work
         </a>
         <a href="#contact" class="px-5 py-3  border border-line dark:border-line-dark font-medium text-sm hover:border-accent transition-all duration-300 hover:-translate-y-0.5">
-          Let�s talk
+          Let's talk
         </a>
       </div>
 
-      <div class="mt-6 flex flex-wrap gap-3 font-body text-xs text-muted dark:text-muted-dark">
+      <div class="mt-6 flex flex-wrap gap-3 font-body text-xs text-muted dark:text-muted-dark" data-aos="fade-up" data-aos-delay="220">
         <span class=" border border-line dark:border-line-dark px-3 py-1.5">React</span>
         <span class=" border border-line dark:border-line-dark px-3 py-1.5">Node.js</span>
         <span class=" border border-line dark:border-line-dark px-3 py-1.5">API design</span>
         <span class=" border border-line dark:border-line-dark px-3 py-1.5">Cloud-ready</span>
       </div>
 
-      <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-xl">
+      <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-xl" data-aos="fade-up" data-aos-delay="280">
         <div class=" border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
           <p class="text-2xl font-body font-semibold text-ink dark:text-ink-dark">4+</p>
           <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">years building</p>
@@ -708,9 +720,9 @@
 
     <div data-aos="fade-right">
       <p class="font-body text-sm text-accent mb-3">06 / contact</p>
-      <h2 class="font-body text-3xl font-semibold tracking-tight mb-4">Let�s build something memorable.</h2>
+      <h2 class="font-body text-3xl font-semibold tracking-tight mb-4">Let's build something memorable.</h2>
       <p class="text-muted dark:text-muted-dark leading-relaxed mb-6 font-light">
-        Whether you need a polished product launch, frontend + backend development, or a full-stack partner to elevate an existing experience, I-d love to help.
+        Whether you need a polished product launch, frontend + backend development, or a full-stack partner to elevate an existing experience, I'd love to help.
       </p>
       <div class="space-y-3 font-body text-sm">
         <a href="mailto:alex.morgan@example.com" class="flex items-center gap-2 hover:text-accent transition-colors">
@@ -757,7 +769,7 @@
 <!-- ============ 6. FOOTER ============ -->
 <footer class="py-10 px-6 border-t border-line dark:border-line-dark">
   <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted dark:text-muted-dark">
-    <p class="font-body">� <span id="year"></span> Alex Morgan. Built with modern full-stack web tools.</p>
+    <p class="font-body">© <span id="year"></span> Alex Morgan. Built with modern full-stack web tools.</p>
     <a href="#home" class="hover:text-accent transition-colors font-body">back to top ?</a>
   </div>
 </footer>
