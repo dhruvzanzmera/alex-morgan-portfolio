@@ -13,6 +13,9 @@
 <!-- AOS - Animate On Scroll -->
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -47,207 +50,60 @@
   html { scroll-behavior: smooth; }
   body { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
-  #typed {
-    display: inline-block;
-    min-width: 18ch;
-    white-space: nowrap;
-  }
-
-  .caret::after {
-    content: '';
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background: currentColor;
-    margin-left: 2px;
-    vertical-align: -2px;
-    animation: blink 1s step-end infinite;
-  }
+  /* Typed headline */
+  #typed { display: inline-block; min-width: 18ch; white-space: nowrap; }
+  .caret::after { content: ''; display: inline-block; width: 2px; height: 1em; background: currentColor; margin-left: 2px; vertical-align: -2px; animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
   ::selection { background: #0d9488; color: #ffffff; }
 
-  .glow {
-    background-image:
-      linear-gradient(180deg, rgba(13,148,136,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(133,131,230,0.08) 1px, transparent 1px),
-      radial-gradient(circle at 18% 5%, rgba(13,148,136,0.12), transparent 14%),
-      radial-gradient(circle at 88% 20%, rgba(133,131,230,0.12), transparent 16%);
-    background-size: 4rem 4rem, 4rem 4rem, 30rem 30rem, 24rem 24rem;
-    background-blend-mode: screen;
-  }
+  /* Visual accents / hero */
+  .glow { background-blend-mode: screen; }
+  .hero-glow { position: relative; overflow: hidden; }
+  .hero-glow::before, .hero-glow::after { content: ''; position: absolute; filter: blur(70px); opacity: 0.45; pointer-events: none; animation: float 8s ease-in-out infinite; }
+  .hero-glow::before { width: 18rem; height: 18rem; background: rgba(13,148,136,0.28); top: -4rem; right: -3rem; }
+  .hero-glow::after { width: 16rem; height: 16rem; background: rgba(133,131,230,0.24); bottom: -3rem; left: -3rem; animation-delay: 2s; }
+  .hero-glow .hero-grid { position: absolute; inset: 0; pointer-events: none; opacity: 0.28; mix-blend-mode: overlay; }
 
-  .card-lift {
-    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
-  }
-  .card-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 20px 40px -16px rgba(13,148,136,0.25);
-  }
-
-  .section-anchor {
-    scroll-margin-top: 6rem;
-  }
-
-  .skill-icon {
-    width: 1.1rem; height: 1.1rem; stroke-width: 1.75;
-  }
-
-  .hero-glow {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-glow::before,
-  .hero-glow::after {
-    content: '';
-    position: absolute;
-    inset: auto;
-    border-radius: 0;
-    filter: blur(70px);
-    opacity: 0.45;
-    pointer-events: none;
-    animation: float 8s ease-in-out infinite;
-  }
-
-  .hero-glow::before {
-    width: 18rem; height: 18rem;
-    background: rgba(13, 148, 136, 0.28);
-    top: -4rem; right: -3rem;
-  }
-
-  .hero-glow::after {
-    width: 16rem; height: 16rem;
-    background: rgba(133, 131, 230, 0.24);
-    bottom: -3rem; left: -3rem;
-    animation-delay: 2s;
-  }
-
-  .hero-glow .hero-grid {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      radial-gradient(circle at 12% 20%, rgba(13,148,136,0.08), transparent 22%),
-      radial-gradient(circle at 88% 18%, rgba(133,131,230,0.1), transparent 20%),
-      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 14rem 14rem, 18rem 18rem, 3.5rem 3.5rem, 3.5rem 3.5rem;
-    opacity: 0.28;
-    mix-blend-mode: overlay;
-  }
-
-  .hero-glow .hero-grid::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 60% 82%, rgba(13,148,136,0.14), transparent 28%);
-  }
-
+  /* Subtle background grid and noise */
   .grid-canvas {
-    background-image:
-      linear-gradient(to right, rgba(13,148,136,0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(13,148,136,0.05) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(13,148,136,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(13,148,136,0.03) 1px, transparent 1px);
     background-size: 44px 44px;
   }
-
-  .noise {
-    position: absolute;
-    inset: 0;
-    opacity: 0.03;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  .dark .grid-canvas {
+    background-image: linear-gradient(to right, rgba(13,148,136,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(13,148,136,0.05) 1px, transparent 1px);
   }
+  .noise { position: absolute; inset: 0; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
+  /* Scanning line */
   .scan-wrap { position: relative; overflow: hidden; }
-  .scan-line {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(13,148,136,0.55), transparent);
-    animation: scan 5s linear infinite;
-    opacity: 0;
-  }
+  .scan-line { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(13,148,136,0.55), transparent); animation: scan 5s linear infinite; opacity: 0; }
   @keyframes scan { 0% { top: 6%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { top: 94%; opacity: 0; } }
 
-  . {
-    border-radius: 0 !important;
-  }
+  /* Card lift (single consolidated definition) */
+  .card-lift { transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
+  .card-lift:hover { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 20px 40px -16px rgba(13,148,136,0.25); }
 
-  .card-lift {
-    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
-    border-radius: 0 !important;
-  }
-  .card-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 20px 40px -16px rgba(13,148,136,0.25);
-  }
+  /* Premium card */
+  .premium-card { background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(248,250,252,0.78)); border: 1px solid rgba(15, 23, 42, 0.08); box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.28); }
+  .dark .premium-card { background: linear-gradient(135deg, rgba(15, 20, 32, 0.96), rgba(8, 11, 19, 0.92)); border-color: rgba(255,255,255,0.08); box-shadow: 0 20px 45px -28px rgba(0,0,0,0.45); }
 
-  .premium-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.78));
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.28);
-    border-radius: 0 !important;
-  }
+  /* Small utilities */
+  .section-anchor { scroll-margin-top: 6rem; }
+  .skill-icon { width: 1.1rem; height: 1.1rem; stroke-width: 1.75; }
+  .glass-panel { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .soft-ring { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
 
-  .dark .premium-card {
-    background: linear-gradient(135deg, rgba(15, 20, 32, 0.96), rgba(8, 11, 19, 0.92));
-    border-color: rgba(255,255,255,0.08);
-    box-shadow: 0 20px 45px -28px rgba(0,0,0,0.45);
-    border-radius: 0 !important;
-  }
+  /* Frame corners */
+  .frame { position: relative; }
+  .frame::before, .frame::after, .frame .fc-tl, .frame .fc-tr, .frame .fc-bl, .frame .fc-br { content: ''; }
+  .frame > .fc { position: absolute; width: 14px; height: 14px; pointer-events: none; border-color: #0d9488; opacity: .65; }
 
-  * {
-    border-radius: 0 !important;
-  }
+  @keyframes float { 0%, 100% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(8px, -12px, 0) scale(1.06); } }
 
-  .glass-panel {
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
+  @media (prefers-reduced-motion: reduce) { .caret::after, .hero-glow::before, .hero-glow::after { animation: none; } }
 
-  .soft-ring {
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
-  }
-
-  .frame {
-    position: relative;
-  }
-  .frame::before, .frame::after,
-  .frame .fc-tl, .frame .fc-tr, .frame .fc-bl, .frame .fc-br { content: ''; }
-  .frame > .fc { position: absolute; width: 14px; height: 14px; pointer-events: none; }
-  .frame > .fc-tl { top: -1px; left: -1px; border-top: 1.5px solid; border-left: 1.5px solid; }
-  .frame > .fc-tr { top: -1px; right: -1px; border-top: 1.5px solid; border-right: 1.5px solid; }
-  .frame > .fc-bl { bottom: -1px; left: -1px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
-  .frame > .fc-br { bottom: -1px; right: -1px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
-  .frame > .fc { border-color: #0d9488; opacity: .65; }
-
-  .premium-card { background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.78)); border: 1px solid rgba(15, 23, 42, 0.08); box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.28); }
-  }
-
-  .dark .premium-card {
-    background: linear-gradient(135deg, rgba(15, 20, 32, 0.96), rgba(8, 11, 19, 0.92));
-    border-color: rgba(255,255,255,0.08);
-    box-shadow: 0 20px 45px -28px rgba(0,0,0,0.45);
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    50% { transform: translate3d(8px, -12px, 0) scale(1.06); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .caret::after { animation: none; }
-    .hero-glow::before,
-    .hero-glow::after { animation: none; }
-  }
-
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-    outline: 2px solid #0d9488;
-    outline-offset: 2px;
-    border-radius: 0;
-  }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #0d9488; outline-offset: 2px; border-radius: 0; }
 </style>
 </head>
 
@@ -282,20 +138,8 @@
 
     <div class="flex items-center gap-3">
       <button id="themeToggle" aria-label="Toggle dark mode" class="w-9 h-9 grid place-items-center border border-line dark:border-line-dark hover:border-accent transition-colors">
-        <svg id="iconSun" class="hidden w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5" />
-          <path d="M12 1v2" />
-          <path d="M12 21v2" />
-          <path d="M4.22 4.22l1.42 1.42" />
-          <path d="M18.36 18.36l1.42 1.42" />
-          <path d="M1 12h2" />
-          <path d="M21 12h2" />
-          <path d="M4.22 19.78l1.42-1.42" />
-          <path d="M18.36 5.64l1.42-1.42" />
-        </svg>
-        <svg id="iconMoon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 0111.21 3a7 7 0 000 14A9 9 0 0121 12.79z" />
-        </svg>
+        <i id="iconSun" class="fa-solid fa-sun hidden text-base"></i>
+        <i id="iconMoon" class="fa-solid fa-moon text-base"></i>
       </button>
       <button id="menuToggle" class="md:hidden w-9 h-9 grid place-items-center" aria-label="Open menu">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -349,22 +193,6 @@
       </div>
 
       <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-xl" data-aos="fade-up" data-aos-delay="280">
-        <div class=" border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
-          <p class="text-2xl font-body font-semibold text-ink dark:text-ink-dark">4+</p>
-          <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">years building</p>
-        </div>
-        <div class=" border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
-          <p class="text-2xl font-body font-semibold text-ink dark:text-ink-dark">30+</p>
-          <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">launches shipped</p>
-        </div>
-        <div class=" border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
-          <p class="text-2xl font-body font-semibold text-ink dark:text-ink-dark">12</p>
-          <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">teams partnered</p>
-        </div>
-      </div>
-    </div>
-
-<div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-xl">
         <div class=" border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
           <p class="text-2xl font-body font-semibold text-ink dark:text-ink-dark">4+</p>
           <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">years building</p>
@@ -658,7 +486,7 @@
           <div class="flex flex-wrap gap-2 font-body text-xs text-muted dark:text-muted-dark mb-4">
             <span>React</span><span>-</span><span>TypeScript</span><span>-</span><span>D3.js</span>
           </div>
-          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study ?</a>
+          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study <i class="fa-solid fa-arrow-right ml-2 text-xs align-middle" aria-hidden="true"></i></a>
         </div>
       </article>
 
@@ -674,7 +502,7 @@
           <div class="flex flex-wrap gap-2 font-body text-xs text-muted dark:text-muted-dark mb-4">
             <span>Next.js</span><span>-</span><span>Tailwind</span><span>-</span><span>Shopify</span>
           </div>
-          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study ?</a>
+          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study <i class="fa-solid fa-arrow-right ml-2 text-xs align-middle" aria-hidden="true"></i></a>
         </div>
       </article>
 
@@ -690,7 +518,7 @@
           <div class="flex flex-wrap gap-2 font-body text-xs text-muted dark:text-muted-dark mb-4">
             <span>React</span><span>-</span><span>Radix</span><span>-</span><span>Storybook</span>
           </div>
-          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study ?</a>
+          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study <i class="fa-solid fa-arrow-right ml-2 text-xs align-middle" aria-hidden="true"></i></a>
         </div>
       </article>
 
@@ -706,7 +534,7 @@
           <div class="flex flex-wrap gap-2 font-body text-xs text-muted dark:text-muted-dark mb-4">
             <span>Vue</span><span>-</span><span>Pinia</span><span>-</span><span>PWA</span>
           </div>
-          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study ?</a>
+          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study <i class="fa-solid fa-arrow-right ml-2 text-xs align-middle" aria-hidden="true"></i></a>
         </div>
       </article>
 
@@ -770,7 +598,7 @@
 <footer class="py-10 px-6 border-t border-line dark:border-line-dark">
   <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted dark:text-muted-dark">
     <p class="font-body">© <span id="year"></span> Alex Morgan. Built with modern full-stack web tools.</p>
-    <a href="#home" class="hover:text-accent transition-colors font-body">back to top ?</a>
+    <a href="#home" class="hover:text-accent transition-colors font-body">back to top <i class="fa-solid fa-arrow-up ml-2 text-xs align-middle" aria-hidden="true"></i></a>
   </div>
 </footer>
 
@@ -843,17 +671,25 @@
   }, { threshold: 0.7 });
   counters.forEach((counter) => counterObserver.observe(counter));
 
-  // Theme toggle (in-memory + intentional default, no storage APIs)
+  // Theme toggle (in-memory) — explicitly show correct icon for current theme
   const root = document.documentElement;
   const sunIcon = document.getElementById('iconSun');
   const moonIcon = document.getElementById('iconMoon');
 
   function setTheme(dark) {
-    root.classList.toggle('dark', dark);
-    sunIcon.classList.toggle('hidden', !dark);
-    moonIcon.classList.toggle('hidden', dark);
+    if (dark) {
+      root.classList.add('dark');
+      sunIcon.classList.remove('hidden');
+      moonIcon.classList.add('hidden');
+    } else {
+      root.classList.remove('dark');
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+    }
   }
-  setTheme(true); // default dark, matches hero design intent
+
+  // Respect markup default (if <html> has class="dark")
+  setTheme(root.classList.contains('dark'));
 
   document.getElementById('themeToggle').addEventListener('click', () => {
     setTheme(!root.classList.contains('dark'));
