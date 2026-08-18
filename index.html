@@ -1,898 +1,1361 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Alex Morgan - Full-stack Developer</title>
-<meta name="description" content="Alex Morgan is a full-stack developer building polished, scalable web apps from frontend interfaces to backend APIs." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Morgan - Full-stack Developer</title>
+  <meta name="description"
+    content="Alex Morgan is a full-stack developer building polished, scalable web apps from frontend interfaces to backend APIs." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
-<!-- AOS - Animate On Scroll -->
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <!-- AOS - Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        colors: {
-          bg: { DEFAULT: '#f8f7f2', dark: '#000000' },
-          surface: { DEFAULT: '#ffffff', dark: '#0a0a0a' },
-          ink: { DEFAULT: '#0f172a', dark: '#f5f5f5' },
-          muted: { DEFAULT: '#5b6472', dark: '#9aa8b6' },
-          line: { DEFAULT: '#e6eaf0', dark: '#111827' },
-          accent: { DEFAULT: '#0d9488', light: '#2dd4bf' },
-          amber: '#e2a53a',
-          violet: '#8583e6',
-        },
-        fontFamily: {
-          display: ['Inter', 'sans-serif'],
-          body: ['Inter', 'sans-serif'],
-          mono: ['Inter', 'sans-serif'],
-        },
-        boxShadow: {
-          soft: '0 1px 2px rgba(15,23,42,0.04), 0 12px 32px -12px rgba(15,23,42,0.12)',
-          softDark: '0 1px 2px rgba(0,0,0,0.2), 0 20px 40px -16px rgba(0,0,0,0.5)',
-        },
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bg: { DEFAULT: '#faf9f6', dark: '#08080a' },
+            surface: { DEFAULT: '#ffffff', dark: '#111114' },
+            ink: { DEFAULT: '#1a1a1a', dark: '#f5f5f7' },
+            muted: { DEFAULT: '#6b7280', dark: '#9ca3af' },
+            line: { DEFAULT: '#e5e7eb', dark: '#1e1e24' },
+            accent: { DEFAULT: '#c5a880', light: '#d9c5b0' },
+            amber: '#a68d75',
+            violet: '#bfa890',
+          },
+          fontFamily: {
+            display: ['Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            soft: '0 1px 2px rgba(15,23,42,0.04), 0 12px 32px -12px rgba(15,23,42,0.12)',
+            softDark: '0 1px 2px rgba(0,0,0,0.2), 0 20px 40px -16px rgba(0,0,0,0.5)',
+          },
+        }
       }
     }
-  }
-</script>
+  </script>
 
-<style>
-  html { scroll-behavior: smooth; }
-  body { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* Typed headline */
-  #typed { display: inline-block; min-width: 18ch; white-space: nowrap; }
-  .caret::after { content: ''; display: inline-block; width: 2px; height: 1em; background: currentColor; margin-left: 2px; vertical-align: -2px; animation: blink 1s step-end infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
+    body {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  ::selection { background: #0d9488; color: #ffffff; }
+    /* Typed headline */
+    #typed {
+      display: inline-block;
+      min-width: 18ch;
+      white-space: nowrap;
+    }
 
-  /* Visual accents / hero */
-  .glow { background-blend-mode: screen; }
-  .hero-glow { position: relative; overflow: hidden; }
-  .hero-glow::before, .hero-glow::after { content: ''; position: absolute; filter: blur(70px); opacity: 0.45; pointer-events: none; animation: float 8s ease-in-out infinite; }
-  .hero-glow::before { width: 18rem; height: 18rem; background: rgba(13,148,136,0.28); top: -4rem; right: -3rem; }
-  .hero-glow::after { width: 16rem; height: 16rem; background: rgba(133,131,230,0.24); bottom: -3rem; left: -3rem; animation-delay: 2s; }
-  .hero-glow .hero-grid { position: absolute; inset: 0; pointer-events: none; opacity: 0.28; mix-blend-mode: overlay; }
+    .caret::after {
+      content: '';
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: currentColor;
+      margin-left: 2px;
+      vertical-align: -2px;
+      animation: blink 1s step-end infinite;
+    }
 
-  /* Subtle background grid and noise */
-  .grid-canvas {
-    background-image: linear-gradient(to right, rgba(13,148,136,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(13,148,136,0.03) 1px, transparent 1px);
-    background-size: 44px 44px;
-  }
-  .dark .grid-canvas {
-    background-image: linear-gradient(to right, rgba(13,148,136,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(13,148,136,0.05) 1px, transparent 1px);
-  }
-  .noise { position: absolute; inset: 0; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
 
-  /* Scanning line */
-  .scan-wrap { position: relative; overflow: hidden; }
-  .scan-line { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(13,148,136,0.55), transparent); animation: scan 5s linear infinite; opacity: 0; }
-  @keyframes scan { 0% { top: 6%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { top: 94%; opacity: 0; } }
+    ::selection {
+      background: #c5a880;
+      color: #ffffff;
+    }
 
-  /* Card lift (single consolidated definition) */
-  .card-lift { transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
-  .card-lift:hover { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 20px 40px -16px rgba(13,148,136,0.25); }
+    /* Visual accents / hero */
+    .glow {
+      background-blend-mode: screen;
+    }
 
-  /* Premium card */
-  .premium-card { background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(248,250,252,0.78)); border: 1px solid rgba(15, 23, 42, 0.08); box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.28); }
-  .dark .premium-card { background: linear-gradient(135deg, rgba(15, 20, 32, 0.96), rgba(8, 11, 19, 0.92)); border-color: rgba(255,255,255,0.08); box-shadow: 0 20px 45px -28px rgba(0,0,0,0.45); }
+    .hero-glow {
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* Small utilities */
-  .section-anchor { scroll-margin-top: 6rem; }
-  .skill-icon { width: 1.1rem; height: 1.1rem; stroke-width: 1.75; }
-  .glass-panel { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-  .soft-ring { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
+    .hero-glow::before,
+    .hero-glow::after {
+      content: '';
+      position: absolute;
+      filter: blur(70px);
+      opacity: 0.45;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
 
-  /* Frame corners */
-  .frame { position: relative; }
-  .frame::before, .frame::after, .frame .fc-tl, .frame .fc-tr, .frame .fc-bl, .frame .fc-br { content: ''; }
-  .frame > .fc { position: absolute; width: 14px; height: 14px; pointer-events: none; border-color: #0d9488; opacity: .65; }
+    .hero-glow::before {
+      width: 18rem;
+      height: 18rem;
+      background: rgba(197, 168, 128, 0.28);
+      top: -4rem;
+      right: -3rem;
+    }
 
-  @keyframes float { 0%, 100% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(8px, -12px, 0) scale(1.06); } }
+    .hero-glow::after {
+      width: 16rem;
+      height: 16rem;
+      background: rgba(191, 168, 144, 0.24);
+      bottom: -3rem;
+      left: -3rem;
+      animation-delay: 2s;
+    }
 
-  @media (prefers-reduced-motion: reduce) { .caret::after, .hero-glow::before, .hero-glow::after { animation: none; } }
+    .hero-glow .hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.28;
+      mix-blend-mode: overlay;
+    }
 
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #0d9488; outline-offset: 2px; border-radius: 0; }
-</style>
+    /* Subtle background grid and noise */
+    .grid-canvas {
+      background-image: linear-gradient(to right, rgba(197, 168, 128, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(197, 168, 128, 0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    .dark .grid-canvas {
+      background-image: linear-gradient(to right, rgba(197, 168, 128, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(197, 168, 128, 0.05) 1px, transparent 1px);
+    }
+
+    .noise {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Scanning line */
+    .scan-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scan-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(197, 168, 128, 0.45), transparent);
+      animation: scan 5s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes scan {
+      0% {
+        top: 6%;
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      92% {
+        opacity: 1;
+      }
+
+      100% {
+        top: 94%;
+        opacity: 0;
+      }
+    }
+
+    /* Card lift (single consolidated definition) */
+    .card-lift {
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .card-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 20px 40px -16px rgba(197, 168, 128, 0.2);
+    }
+
+    /* Premium card */
+    .premium-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.78));
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.28);
+    }
+
+    .dark .premium-card {
+      background: linear-gradient(135deg, rgba(15, 20, 32, 0.96), rgba(8, 11, 19, 0.92));
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 45px -28px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Small utilities */
+    .section-anchor {
+      scroll-margin-top: 6rem;
+    }
+
+    .skill-icon {
+      width: 1.1rem;
+      height: 1.1rem;
+      stroke-width: 1.75;
+    }
+
+    .glass-panel {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .soft-ring {
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    /* Frame corners */
+    .frame {
+      position: relative;
+    }
+
+    .frame::before,
+    .frame::after,
+    .frame .fc-tl,
+    .frame .fc-tr,
+    .frame .fc-bl,
+    .frame .fc-br {
+      content: '';
+    }
+
+    .frame>.fc {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+      border-color: #c5a880;
+      opacity: .65;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(8px, -12px, 0) scale(1.06);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .caret::after,
+      .hero-glow::before,
+      .hero-glow::after {
+        animation: none;
+      }
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid #c5a880;
+      outline-offset: 2px;
+      border-radius: 0;
+    }
+  </style>
 </head>
 
 <body class="bg-bg dark:bg-bg-dark text-ink dark:text-ink-dark font-body antialiased transition-colors duration-300">
-<div class="relative overflow-hidden">
-  <div id="scrollProgress" class="fixed top-0 left-0 z-[60] h-1 w-full origin-left scale-x-0 bg-accent transition-transform duration-200"></div>
-  <div class="grid-canvas pointer-events-none fixed inset-0 -z-10"></div>
-  <div class="noise -z-10"></div>
-  <div class="pointer-events-none absolute inset-0 overflow-hidden">
-    <div class="absolute left-[-8%] top-10 h-72 w-72  bg-accent/20 blur-[120px]"></div>
-    <div class="absolute right-[-5%] top-28 h-80 w-80  bg-violet/20 blur-[140px]"></div>
-  </div>
-
-  <!-- Particle canvas (hero) -->
-  <canvas id="heroParticles" class="pointer-events-none fixed inset-0 -z-10"></canvas>
-
-<!-- ============ NAV ============ -->
-<header class="fixed top-0 inset-x-0 z-50 border-b border-line dark:border-line-dark bg-bg/80 dark:bg-bg-dark/80 backdrop-blur-md">
-  <nav class="max-w-6xl mx-auto px-6 py-3 min-h-16 flex items-center justify-between gap-4">
-    <a href="#home" class="font-body font-semibold text-lg tracking-tight whitespace-nowrap">
-      alex<span class="text-accent">.</span>morgan
-    </a>
-
-    <div class="hidden md:flex items-center gap-4 lg:gap-6 font-body text-[12px] lg:text-[13px] text-muted dark:text-muted-dark">
-      <a href="#about" class="hover:text-ink dark:hover:text-ink-dark transition-colors">01 / about</a>
-      <a href="#services" class="hover:text-ink dark:hover:text-ink-dark transition-colors">02 / services</a>
-      <a href="#skills" class="hover:text-ink dark:hover:text-ink-dark transition-colors">03 / skills</a>
-      <a href="#journey" class="hover:text-ink dark:hover:text-ink-dark transition-colors">04 / journey</a>
-      <a href="#projects" class="hover:text-ink dark:hover:text-ink-dark transition-colors">05 / projects</a>
-      <a href="#contact" class="hover:text-ink dark:hover:text-ink-dark transition-colors">06 / contact</a>
+  <div class="relative overflow-hidden">
+    <div id="scrollProgress"
+      class="fixed top-0 left-0 z-[60] h-1 w-full origin-left scale-x-0 bg-accent transition-transform duration-200">
+    </div>
+    <div class="grid-canvas pointer-events-none fixed inset-0 -z-10"></div>
+    <div class="noise -z-10"></div>
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute left-[-8%] top-10 h-72 w-72  bg-accent/20 blur-[120px]"></div>
+      <div class="absolute right-[-5%] top-28 h-80 w-80  bg-violet/20 blur-[140px]"></div>
     </div>
 
-    <div class="flex items-center gap-3">
-      <button id="themeToggle" aria-label="Toggle dark mode" class="w-9 h-9 grid place-items-center border border-line dark:border-line-dark hover:border-accent transition-colors">
-        <i id="iconSun" class="fa-solid fa-sun hidden text-base"></i>
-        <i id="iconMoon" class="fa-solid fa-moon text-base"></i>
-      </button>
-      <button id="menuToggle" class="md:hidden w-9 h-9 grid place-items-center" aria-label="Open menu">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
-  </nav>
+    <!-- Particle canvas (hero) -->
+    <canvas id="heroParticles" class="pointer-events-none fixed inset-0 -z-10"></canvas>
 
-  <div id="mobileMenu" class="hidden md:hidden border-t border-line dark:border-line-dark px-6 py-4 flex flex-col gap-4 font-body text-sm bg-bg dark:bg-bg-dark">
-    <a href="#about">01 / about</a>
-    <a href="#services">02 / services</a>
-    <a href="#skills">03 / skills</a>
-    <a href="#journey">04 / journey</a>
-    <a href="#projects">05 / projects</a>
-    <a href="#contact">06 / contact</a>
-  </div>
-</header>
-
-<!-- ============ 1. HERO ============ -->
-<section id="home" class="hero-glow glow scan-wrap relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32 px-6">
-  <div class="hero-grid"></div>
-  <div class="scan-line"></div>
-  <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
-
-    <div class="hero-content" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2  border border-accent/25 bg-accent/10 px-3 py-1.5 text-xs font-body text-accent soft-ring">
-        <span class="h-2.5 w-2.5  bg-emerald-500"></span>
-        Available for select full-stack launches
-      </div>
-      <p class="font-body text-sm text-accent mt-5">// full-stack engineer</p>
-      <h1 class="font-body text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] tracking-tight">
-        I build modern products from polished UI to powerful APIs that feel <span id="typed" class="text-accent caret"></span>
-      </h1>
-      <p class="mt-6 text-muted dark:text-muted-dark text-lg max-w-xl leading-relaxed font-light">
-        I deliver elegant frontend experiences backed by scalable server architecture, APIs, and deployment-ready systems.
-      </p>
-
-      <div class="mt-8 flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="160">
-        <a href="#projects" class="px-5 py-3  bg-accent text-white font-medium text-sm shadow-soft hover:bg-accent-light transition-all duration-300 hover:-translate-y-0.5">
-          View selected work
+    <!-- ============ NAV ============ -->
+    <header
+      class="fixed top-0 inset-x-0 z-50 border-b border-line dark:border-line-dark bg-bg/80 dark:bg-bg-dark/80 backdrop-blur-md">
+      <nav class="max-w-6xl mx-auto px-6 py-3 min-h-16 flex items-center justify-between gap-4">
+        <a href="#home" class="font-body font-semibold text-lg tracking-tight whitespace-nowrap">
+          alex<span class="text-accent">.</span>morgan
         </a>
-        <a href="#contact" class="px-5 py-3  border border-line dark:border-line-dark font-medium text-sm hover:border-accent transition-all duration-300 hover:-translate-y-0.5">
-          Let's talk
-        </a>
+
+        <div
+          class="hidden md:flex items-center gap-4 lg:gap-6 font-body text-[12px] lg:text-[13px] text-muted dark:text-muted-dark">
+          <a href="#about" class="hover:text-ink dark:hover:text-ink-dark transition-colors">01 / about</a>
+          <a href="#services" class="hover:text-ink dark:hover:text-ink-dark transition-colors">02 / services</a>
+          <a href="#skills" class="hover:text-ink dark:hover:text-ink-dark transition-colors">03 / skills</a>
+          <a href="#journey" class="hover:text-ink dark:hover:text-ink-dark transition-colors">04 / journey</a>
+          <a href="#projects" class="hover:text-ink dark:hover:text-ink-dark transition-colors">05 / projects</a>
+          <a href="#contact" class="hover:text-ink dark:hover:text-ink-dark transition-colors">06 / contact</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button id="themeToggle" aria-label="Toggle dark mode"
+            class="w-9 h-9 grid place-items-center border border-line dark:border-line-dark hover:border-accent transition-colors rounded-xl">
+            <i id="iconSun" class="fa-solid fa-sun hidden text-base"></i>
+            <i id="iconMoon" class="fa-solid fa-moon text-base"></i>
+          </button>
+          <button id="menuToggle" class="md:hidden w-9 h-9 grid place-items-center" aria-label="Open menu">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobileMenu"
+        class="hidden md:hidden border-t border-line dark:border-line-dark px-6 py-4 flex flex-col gap-4 font-body text-sm bg-bg dark:bg-bg-dark">
+        <a href="#about">01 / about</a>
+        <a href="#services">02 / services</a>
+        <a href="#skills">03 / skills</a>
+        <a href="#journey">04 / journey</a>
+        <a href="#projects">05 / projects</a>
+        <a href="#contact">06 / contact</a>
       </div>
+    </header>
 
-      <div class="mt-6 flex flex-wrap gap-3 font-body text-xs text-muted dark:text-muted-dark" data-aos="fade-up" data-aos-delay="220">
-        <span class=" border border-line dark:border-line-dark px-3 py-1.5">React</span>
-        <span class=" border border-line dark:border-line-dark px-3 py-1.5">Node.js</span>
-        <span class=" border border-line dark:border-line-dark px-3 py-1.5">API design</span>
-        <span class=" border border-line dark:border-line-dark px-3 py-1.5">Cloud-ready</span>
+    <!-- ============ 1. HERO ============ -->
+    <section id="home" class="hero-glow glow scan-wrap relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32 px-6">
+      <div class="hero-grid"></div>
+      <div class="scan-line"></div>
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
+
+        <div class="hero-content" data-aos="fade-up">
+          <div
+            class="inline-flex items-center gap-2 border border-accent/20 bg-accent/5 px-3 py-1.5 text-[11px] uppercase tracking-wider font-medium text-accent soft-ring rounded-xl">
+            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Available for select engagements
+          </div>
+          <p class="font-body text-xs uppercase tracking-widest text-accent mt-6 font-semibold">// Full-Stack Software
+            Engineer</p>
+          <h1 class="font-body text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight mt-3">
+            Building robust web applications from polished interfaces to scalable <span class="text-accent">APIs</span>
+          </h1>
+          <p class="mt-6 text-muted dark:text-muted-dark text-lg max-w-2xl leading-relaxed font-light">
+            I engineer high-performance frontend experiences backed by clean, secure server architecture and
+            deployment-ready cloud infrastructure.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="160">
+            <a href="#projects"
+              class="px-6 py-3.5 bg-accent text-[#08080a] font-semibold text-sm shadow-soft hover:bg-accent-light transition-all duration-300 hover:-translate-y-0.5 rounded-xl">
+              Explore Projects
+            </a>
+            <a href="#contact"
+              class="px-6 py-3.5 border border-line dark:border-line-dark font-medium text-sm hover:border-accent hover:text-accent transition-all duration-300 hover:-translate-y-0.5 rounded-xl">
+              Get in Touch
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3 font-body text-xs font-medium" data-aos="fade-up" data-aos-delay="220">
+            <span
+              class="border border-accent/20 bg-accent/5 dark:bg-accent/10 text-accent dark:text-accent-light px-3 py-1.5 rounded-xl">React
+              / Next.js</span>
+            <span
+              class="border border-violet/20 bg-violet/5 dark:bg-violet/10 text-violet dark:text-violet/90 px-3 py-1.5 rounded-xl">Node.js
+              / Express</span>
+            <span
+              class="border border-amber/20 bg-amber/5 dark:bg-amber/10 text-amber dark:text-amber/90 px-3 py-1.5 rounded-xl">REST
+              &amp; GraphQL APIs</span>
+            <span
+              class="border border-line dark:border-line-dark bg-surface/30 px-3 py-1.5 rounded-xl text-ink dark:text-ink-dark">AWS
+              &amp; Docker</span>
+          </div>
+
+          <div class="mt-12 grid grid-cols-3 gap-6 max-w-xl" data-aos="fade-up" data-aos-delay="280">
+            <div class="border-l-2 border-accent pl-4">
+              <p class="text-3xl font-body font-bold text-ink dark:text-ink-dark">4+</p>
+              <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">Years Experience</p>
+            </div>
+            <div class="border-l-2 border-accent pl-4">
+              <p class="text-3xl font-body font-bold text-ink dark:text-ink-dark">30+</p>
+              <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">Projects Launched</p>
+            </div>
+            <div class="border-l-2 border-accent pl-4">
+              <p class="text-3xl font-body font-bold text-ink dark:text-ink-dark">12</p>
+              <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">Happy Clients</p>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-xl" data-aos="fade-up" data-aos-delay="280">
-        <div class=" border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
-          <p class="text-2xl font-body font-semibold text-ink dark:text-ink-dark">4+</p>
-          <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">years building</p>
-        </div>
-        <div class=" border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
-          <p class="text-2xl font-body font-semibold text-ink dark:text-ink-dark">30+</p>
-          <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">launches shipped</p>
-        </div>
-        <div class=" border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 p-4">
-          <p class="text-2xl font-body font-semibold text-ink dark:text-ink-dark">12</p>
-          <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">teams partnered</p>
-        </div>
-      </div>
-    </div>
+    <!-- ============ 2. ABOUT ============ -->
+    <section id="about" class="py-24 px-6 border-t border-line dark:border-line-dark relative">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center">
 
-  </div>
-</section>
-
-<!-- ============ 2. ABOUT ============ -->
-<section id="about" class="py-24 px-6 border-t border-line dark:border-line-dark">
-  <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12">
-
-    <div data-aos="fade-right">
-      <p class="font-body text-sm text-accent mb-3">01 / about</p>
-      <h2 class="font-body text-3xl font-semibold tracking-tight">A calm, detail-driven engineer who turns product ambition into robust full-stack products.</h2>
-      <p class="mt-5 text-muted dark:text-muted-dark leading-relaxed font-light">
-        I care about the invisible work that makes products feel premium: clean interfaces, reliable APIs, performance, and deployment-ready systems.
-      </p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <span class=" border border-line dark:border-line-dark px-3 py-1.5 text-xs font-body text-muted dark:text-muted-dark">API-first</span>
-        <span class=" border border-line dark:border-line-dark px-3 py-1.5 text-xs font-body text-muted dark:text-muted-dark">Cloud-aware</span>
-        <span class=" border border-line dark:border-line-dark px-3 py-1.5 text-xs font-body text-muted dark:text-muted-dark">Performance-first</span>
-      </div>
-    </div>
-
-    <div data-aos="fade-up" data-aos-delay="100" class="space-y-4">
-      <div class=" border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
-          Over the last four years I-ve helped startups build fast full-stack products with polished frontends, solid APIs, and deployment-ready operations.
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class=" border border-line dark:border-line-dark bg-slate-50/70 dark:bg-white/[0.03] p-5">
-          <p class="text-3xl font-body font-semibold text-ink dark:text-ink-dark" data-counter data-target="4" data-suffix="+">0</p>
-          <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">years experience</p>
-        </div>
-        <div class=" border border-line dark:border-line-dark bg-slate-50/70 dark:bg-white/[0.03] p-5">
-          <p class="text-3xl font-body font-semibold text-ink dark:text-ink-dark" data-counter data-target="30" data-suffix="+">0</p>
-          <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">projects launched</p>
-        </div>
-      </div>
-
-      <div class=" border border-line dark:border-line-dark bg-gradient-to-br from-accent/10 to-violet/10 p-6">
-        <p class="text-sm leading-relaxed text-muted dark:text-muted-dark font-light">
-          -The best interfaces feel obvious. I focus on making that feeling real through clear structure, thoughtful motion, and reliable implementation.-
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============ 3. SERVICES ============ -->
-<section id="services" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
-  <div class="max-w-6xl mx-auto">
-    <p class="font-body text-sm text-accent mb-3" data-aos="fade-up">02 / services</p>
-    <h2 class="font-body text-3xl font-semibold tracking-tight mb-12" data-aos="fade-up">What I help teams ship</h2>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <article data-aos="fade-up" class="card-lift  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
-        <div class="w-12 h-12  bg-accent/10 text-accent grid place-items-center mb-5">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M7 3v4M17 3v4M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/></svg>
-        </div>
-        <h3 class="font-body font-semibold text-lg mb-2">Platform architecture</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">APIs, server-side systems, and frontend design working together to power resilient products.</p>
-      </article>
-
-      <article data-aos="fade-up" data-aos-delay="100" class="card-lift  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
-        <div class="w-12 h-12  bg-violet/10 text-violet grid place-items-center mb-5">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15l6-6 3 3 7-8"/><path d="M20 4h-5"/><path d="M20 4v5"/></svg>
-        </div>
-        <h3 class="font-body font-semibold text-lg mb-2">Web apps &amp; APIs</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Modern client-side and server-side experiences built with React, Node, and cloud-ready services.</p>
-      </article>
-
-      <article data-aos="fade-up" data-aos-delay="200" class="card-lift  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
-        <div class="w-12 h-12  bg-amber/10 text-amber grid place-items-center mb-5">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M7 8l5-5 5 5"/><path d="M7 16l5 5 5-5"/></svg>
-        </div>
-        <h3 class="font-body font-semibold text-lg mb-2">Performance &amp; reliability</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Fast interfaces with dependable backend systems, tested for speed, accessibility, and scale.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 4. JOURNEY ============ -->
-<section id="journey" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
-  <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.8fr_1.2fr] gap-12">
-    <div data-aos="fade-right">
-      <p class="font-body text-sm text-accent mb-3">03 / journey</p>
-      <h2 class="font-body text-3xl font-semibold tracking-tight mb-4">A product-minded developer with shipping experience</h2>
-      <p class="text-muted dark:text-muted-dark leading-relaxed font-light">I-ve worked across startup and scale-up teams, translating product goals into clear interfaces and reliable frontend systems.</p>
-    </div>
-
-    <div class="space-y-4" data-aos="fade-up">
-      <div class=" border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+        <div data-aos="fade-right" class="space-y-6">
           <div>
-            <p class="font-body text-xs text-accent">2022 - Present</p>
-            <h3 class="font-body font-semibold text-lg">Senior Full-stack Developer - Northstar Labs</h3>
+            <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">01 / about</p>
+            <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+              Bridging the gap between design vision and backend execution.
+            </h2>
           </div>
-          <span class="px-3 py-1  border border-line dark:border-line-dark text-xs font-body">Full-time</span>
+          <p class="text-muted dark:text-muted-dark leading-relaxed font-light text-base">
+            I specialize in building clean, scalable interfaces backed by optimized systems. I focus on details that
+            often go unnoticed but are critical for creating premium digital products.
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            <span
+              class="border border-accent/20 bg-accent/5 dark:bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent dark:text-accent-light rounded-xl flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> API-First Design
+            </span>
+            <span
+              class="border border-violet/20 bg-violet/5 dark:bg-violet/10 px-3 py-1.5 text-xs font-medium text-violet dark:text-violet/90 rounded-xl flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-violet"></span> Cloud Architecture
+            </span>
+            <span
+              class="border border-amber/20 bg-amber/5 dark:bg-amber/10 px-3 py-1.5 text-xs font-medium text-amber dark:text-amber/90 rounded-xl flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber"></span> Performance Optimization
+            </span>
+          </div>
         </div>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Leading UI implementation for a B2B analytics platform with an emphasis on design consistency, motion, and reduce churn.</p>
-      </div>
 
-      <div class=" border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+        <div data-aos="fade-up" data-aos-delay="100" class="grid gap-6">
+          <div
+            class="border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6 rounded-xl shadow-sm">
+            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
+              Over the last four years, I've helped startups and established engineering teams deliver high-performance
+              web solutions, reducing load times and standardizing design systems.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div
+              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-6 rounded-xl flex flex-col justify-center">
+              <p class="text-4xl font-bold text-ink dark:text-ink-dark tracking-tight" data-counter data-target="4"
+                data-suffix="+">0</p>
+              <p class="text-xs font-medium text-muted dark:text-muted-dark uppercase tracking-wider mt-2">Years
+                Experience</p>
+            </div>
+            <div
+              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-6 rounded-xl flex flex-col justify-center">
+              <p class="text-4xl font-bold text-ink dark:text-ink-dark tracking-tight" data-counter data-target="30"
+                data-suffix="+">0</p>
+              <p class="text-xs font-medium text-muted dark:text-muted-dark uppercase tracking-wider mt-2">Projects
+                Shipped</p>
+            </div>
+          </div>
+
+          <div class="border border-l-4 border-line dark:border-line-dark border-l-accent bg-accent/5 p-6 rounded-r-xl">
+            <p class="text-sm italic leading-relaxed text-muted dark:text-muted-dark font-light">
+              "The best interfaces feel obvious. I focus on making that feeling real through clear structure, thoughtful
+              motion, and reliable implementation."
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="services"
+      class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
+      <div class="max-w-6xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold" data-aos="fade-up">02 /
+          services</p>
+        <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight mb-12" data-aos="fade-up">What I help teams
+          ship</h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <article data-aos="fade-up"
+            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative overflow-hidden group transition-all duration-300 hover:border-accent/30">
+            <div
+              class="w-12 h-12 rounded-xl bg-accent/10 text-accent border border-accent/25 grid place-items-center mb-6 transition-transform duration-300 group-hover:scale-110">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 7h16M7 3v4M17 3v4M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12" />
+              </svg>
+            </div>
+            <h3 class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark">Platform Architecture</h3>
+            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
+              Designing optimized system architectures, API schemas, and server-side logic that connect seamlessly with
+              front-end interfaces to support high concurrency.
+            </p>
+          </article>
+
+          <article data-aos="fade-up" data-aos-delay="100"
+            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative overflow-hidden group transition-all duration-300 hover:border-violet/30">
+            <div
+              class="w-12 h-12 rounded-xl bg-violet/10 text-violet border border-violet/25 grid place-items-center mb-6 transition-transform duration-300 group-hover:scale-110">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 15l6-6 3 3 7-8" />
+                <path d="M20 4h-5" />
+                <path d="M20 4v5" />
+              </svg>
+            </div>
+            <h3 class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark">Full-Stack Web Apps</h3>
+            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
+              Engineering responsive applications using React, Next.js, and Node.js with secure authentication, modern
+              state management, and smooth user flows.
+            </p>
+          </article>
+
+          <article data-aos="fade-up" data-aos-delay="200"
+            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative overflow-hidden group transition-all duration-300 hover:border-amber/30">
+            <div
+              class="w-12 h-12 rounded-xl bg-amber/10 text-amber border border-amber/25 grid place-items-center mb-6 transition-transform duration-300 group-hover:scale-110">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 3v18" />
+                <path d="M7 8l5-5 5 5" />
+                <path d="M7 16l5 5 5-5" />
+              </svg>
+            </div>
+            <h3 class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark">Performance & Scale</h3>
+            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
+              Auditing performance bottlenecks, optimizing database queries, implementing caching mechanisms, and
+              securing cloud environments for peak loads.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. JOURNEY ============ -->
+    <section id="journey" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center">
+        <div data-aos="fade-right" class="space-y-6">
           <div>
-            <p class="font-body text-xs text-accent">2019 - 2022</p>
-            <h3 class="font-body font-semibold text-lg">Full-stack Developer - Studio North</h3>
+            <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">03 / journey</p>
+            <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight leading-tight">A product-minded developer
+              with shipping experience</h2>
           </div>
-          <span class="px-3 py-1  border border-line dark:border-line-dark text-xs font-body">Product team</span>
+          <p class="text-muted dark:text-muted-dark leading-relaxed font-light text-base">
+            I have worked across startup and scale-up teams, translating complex product goals into clear, optimized
+            user interfaces and robust front-end systems.
+          </p>
         </div>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">Shipped campaigns, e-commerce experiences, and conversion-focused landing pages with a strong focus on speed and clarity.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ 5. APPROACH ============ -->
-<section id="approach" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
-  <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-start">
-    <div data-aos="fade-up" class=" border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8">
-      <p class="font-body text-sm text-accent mb-3">04 / approach</p>
-      <h2 class="font-body text-3xl font-semibold tracking-tight">A thoughtful process that keeps quality high without slowing delivery.</h2>
-      <p class="mt-5 text-muted dark:text-muted-dark leading-relaxed font-light">
-        I work closely with designers, founders, and product teams to move from concept to launch with clarity - keeping the experience elegant while staying grounded in real-world constraints.
-      </p>
-      <div class="mt-6 grid sm:grid-cols-2 gap-4">
-        <div class=" border border-line dark:border-line-dark p-4">
-          <h3 class="font-body font-semibold">1. Align</h3>
-          <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light">Clarify the user need, business goal, and product constraints early.</p>
-        </div>
-        <div class=" border border-line dark:border-line-dark p-4">
-          <h3 class="font-body font-semibold">2. Build</h3>
-          <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light">Create resilient UI foundations with strong interaction details and accessibility.</p>
-        </div>
-        <div class=" border border-line dark:border-line-dark p-4">
-          <h3 class="font-body font-semibold">3. Refine</h3>
-          <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light">Tighten motion, responsiveness, and clarity through iteration and feedback.</p>
-        </div>
-        <div class=" border border-line dark:border-line-dark p-4">
-          <h3 class="font-body font-semibold">4. Launch</h3>
-          <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light">Ship with confidence, knowing the experience is robust and ready to grow.</p>
-        </div>
-      </div>
-    </div>
-
-    <div data-aos="fade-up" data-aos-delay="120" class=" border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8">
-      <p class="font-body text-sm text-accent mb-3">Selected impact</p>
-      <div class="space-y-4 mt-4">
-        <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
-          <span class="text-sm text-muted dark:text-muted-dark">Faster load times</span>
-          <span class="font-body font-semibold text-ink dark:text-ink-dark">30-50%</span>
-        </div>
-        <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
-          <span class="text-sm text-muted dark:text-muted-dark">Accessibility coverage</span>
-          <span class="font-body font-semibold text-ink dark:text-ink-dark">WCAG-ready</span>
-        </div>
-        <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
-          <span class="text-sm text-muted dark:text-muted-dark">Design consistency</span>
-          <span class="font-body font-semibold text-ink dark:text-ink-dark">Systemized</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-sm text-muted dark:text-muted-dark">Cross-team collaboration</span>
-          <span class="font-body font-semibold text-ink dark:text-ink-dark">High-trust</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 6. SKILLS ============ -->
-<section id="skills" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
-  <div class="max-w-6xl mx-auto">
-    <p class="font-body text-sm text-accent mb-3" data-aos="fade-up">02 / skills</p>
-    <h2 class="font-body text-3xl font-semibold tracking-tight mb-12" data-aos="fade-up">What I work with</h2>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div data-aos="fade-up" data-aos-delay="0" class="card-lift p-6  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark">
-        <div class="flex items-center gap-2 mb-4">
-          <svg class="skill-icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          <h3 class="font-body font-semibold">Languages</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 font-body text-xs">
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">JavaScript (ES6+)</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">TypeScript</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">HTML5</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">CSS3</span>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" data-aos-delay="100" class="card-lift p-6  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark">
-        <div class="flex items-center gap-2 mb-4">
-          <svg class="skill-icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-          <h3 class="font-body font-semibold">Frameworks</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 font-body text-xs">
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">React</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Next.js</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Tailwind CSS</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Node.js</span>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" data-aos-delay="200" class="card-lift p-6  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark">
-        <div class="flex items-center gap-2 mb-4">
-          <svg class="skill-icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          <h3 class="font-body font-semibold">Tooling</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 font-body text-xs">
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Git</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Vite</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Figma</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Storybook</span>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" data-aos-delay="0" class="card-lift p-6  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark">
-        <div class="flex items-center gap-2 mb-4">
-          <svg class="skill-icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h3 class="font-body font-semibold">Testing</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 font-body text-xs">
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Jest</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Playwright</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Testing Library</span>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" data-aos-delay="100" class="card-lift p-6  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark">
-        <div class="flex items-center gap-2 mb-4">
-          <svg class="skill-icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 17V5a2 2 0 0 1 2-2h8.5L20 8.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2z"/><polyline points="14 3 14 9 20 9"/></svg>
-          <h3 class="font-body font-semibold">Backend</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 font-body text-xs">
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Node.js</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Express</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Postgres</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Docker</span>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" data-aos-delay="200" class="card-lift p-6  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark">
-        <div class="flex items-center gap-2 mb-4">
-          <svg class="skill-icon text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <h3 class="font-body font-semibold">Craft</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 font-body text-xs">
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Accessibility</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Responsive design</span>
-          <span class="px-3 py-1.5  border border-line dark:border-line-dark">Performance</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ 6. PROJECTS ============ -->
-<section id="projects" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
-  <div class="max-w-6xl mx-auto">
-    <p class="font-body text-sm text-accent mb-3" data-aos="fade-up">05 / projects</p>
-    <h2 class="font-body text-3xl font-semibold tracking-tight mb-12" data-aos="fade-up">Selected work</h2>
-
-    <div class="grid md:grid-cols-2 gap-6">
-
-      <article data-aos="zoom-in" data-aos-delay="0" class="card-lift group  border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
-        <div class="relative h-56 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Analytics dashboard interface on a laptop screen" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4  border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur">Fintech Dashboard</span>
-        </div>
-        <div class="p-6">
-          <h3 class="font-body font-semibold text-lg mb-2">Fintech Dashboard</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">A real-time analytics dashboard for a payments startup, rebuilt from a legacy stack into a fast, componentized React experience.</p>
-          <div class="flex flex-wrap gap-2 font-body text-xs text-muted dark:text-muted-dark mb-4">
-            <span>React</span><span>-</span><span>TypeScript</span><span>-</span><span>D3.js</span>
+        <div class="space-y-6" data-aos="fade-up">
+          <div
+            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative group transition-all duration-300 hover:border-accent/30">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+              <div>
+                <p class="font-body text-xs text-accent uppercase tracking-wider font-semibold">2022 - Present</p>
+                <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark mt-1">Senior Full-stack Developer
+                </h3>
+                <p class="text-sm text-muted dark:text-muted-dark">Northstar Labs</p>
+              </div>
+              <span
+                class="px-3 py-1 border border-accent/20 bg-accent/5 text-accent text-xs font-semibold rounded-xl self-start sm:self-auto">Full-time</span>
+            </div>
+            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
+              Leading UI implementation for a B2B analytics platform with an emphasis on design consistency, modular
+              components, interaction details, and reduced user churn.
+            </p>
           </div>
-          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study <i class="fa-solid fa-arrow-right ml-2 text-xs align-middle" aria-hidden="true"></i></a>
-        </div>
-      </article>
 
-      <article data-aos="zoom-in" data-aos-delay="100" class="card-lift group  border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
-        <div class="relative h-56 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80" alt="Modern e-commerce storefront on a device" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4  border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur">Commerce Storefront</span>
-        </div>
-        <div class="p-6">
-          <h3 class="font-body font-semibold text-lg mb-2">Commerce Storefront</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">Headless storefront built on Next.js with conversion-focused UX and a sharp lift in Core Web Vitals and page speed.</p>
-          <div class="flex flex-wrap gap-2 font-body text-xs text-muted dark:text-muted-dark mb-4">
-            <span>Next.js</span><span>-</span><span>Tailwind</span><span>-</span><span>Shopify</span>
+          <div
+            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative group transition-all duration-300 hover:border-violet/30">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+              <div>
+                <p class="font-body text-xs text-violet uppercase tracking-wider font-semibold">2019 - 2022</p>
+                <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark mt-1">Full-stack Developer</h3>
+                <p class="text-sm text-muted dark:text-muted-dark">Studio North</p>
+              </div>
+              <span
+                class="px-3 py-1 border border-violet/20 bg-violet/5 text-violet text-xs font-semibold rounded-xl self-start sm:self-auto">Product
+                Team</span>
+            </div>
+            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
+              Shipped marketing campaigns, optimized e-commerce experiences, and built conversion-focused landing pages
+              with a strong focus on core web vitals, speed, and client conversion.
+            </p>
           </div>
-          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study <i class="fa-solid fa-arrow-right ml-2 text-xs align-middle" aria-hidden="true"></i></a>
-        </div>
-      </article>
-
-      <article data-aos="zoom-in" data-aos-delay="0" class="card-lift group  border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
-        <div class="relative h-56 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Design system components displayed in a clean workspace" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4  border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur">Component Library</span>
-        </div>
-        <div class="p-6">
-          <h3 class="font-body font-semibold text-lg mb-2">Component Library</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">An open-source, accessible React component library documented in Storybook and adopted across multiple product teams.</p>
-          <div class="flex flex-wrap gap-2 font-body text-xs text-muted dark:text-muted-dark mb-4">
-            <span>React</span><span>-</span><span>Radix</span><span>-</span><span>Storybook</span>
-          </div>
-          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study <i class="fa-solid fa-arrow-right ml-2 text-xs align-middle" aria-hidden="true"></i></a>
-        </div>
-      </article>
-
-      <article data-aos="zoom-in" data-aos-delay="100" class="card-lift group  border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark">
-        <div class="relative h-56 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="Developer workspace with screens and interface prototypes" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4  border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur">Booking Platform</span>
-        </div>
-        <div class="p-6">
-          <h3 class="font-body font-semibold text-lg mb-2">Booking Platform</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">A multi-step booking flow with optimistic UI updates and offline support, built for a travel platform serving hundreds of thousands of users.</p>
-          <div class="flex flex-wrap gap-2 font-body text-xs text-muted dark:text-muted-dark mb-4">
-            <span>Vue</span><span>-</span><span>Pinia</span><span>-</span><span>PWA</span>
-          </div>
-          <a href="#" class="text-sm font-medium text-accent hover:underline">View case study <i class="fa-solid fa-arrow-right ml-2 text-xs align-middle" aria-hidden="true"></i></a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ 7. CONTACT ============ -->
-<section id="contact" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.4fr] gap-12">
-
-    <div data-aos="fade-right">
-      <p class="font-body text-sm text-accent mb-3">06 / contact</p>
-      <h2 class="font-body text-3xl font-semibold tracking-tight mb-4">Let's build something memorable.</h2>
-      <p class="text-muted dark:text-muted-dark leading-relaxed mb-6 font-light">
-        Whether you need a polished product launch, frontend + backend development, or a full-stack partner to elevate an existing experience, I'd love to help.
-      </p>
-      <div class="space-y-3 font-body text-sm">
-        <a href="mailto:alex.morgan@example.com" class="flex items-center gap-2 hover:text-accent transition-colors">
-          alex.morgan@example.com
-        </a>
-        <div class="flex flex-wrap gap-4 pt-2">
-          <a href="#" class="hover:text-accent transition-colors">GitHub</a>
-          <a href="#" class="hover:text-accent transition-colors">LinkedIn</a>
-          <a href="#" class="hover:text-accent transition-colors">Twitter</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div data-aos="fade-up" data-aos-delay="100" class=" border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6 sm:p-8">
-      <form class="grid gap-4" onsubmit="return handleContactSubmit(event)">
-        <div class="grid sm:grid-cols-2 gap-4">
+    <section id="approach"
+      class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+        <div data-aos="fade-up"
+          class="border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl flex flex-col justify-between h-full group transition-all duration-300 hover:border-accent/20">
           <div>
-            <label for="name" class="block font-body text-xs text-muted dark:text-muted-dark mb-2">Name</label>
-            <input id="name" name="name" type="text" required
-              class="w-full px-4 py-3  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors" />
+            <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">04 / approach</p>
+            <h2 class="font-body text-3xl font-bold tracking-tight text-ink dark:text-ink-dark">A thoughtful process
+              that keeps quality high without slowing delivery.</h2>
+            <p class="mt-4 text-muted dark:text-muted-dark leading-relaxed font-light text-base">
+              I partner closely with founders, designers, and engineering teams to transform concepts into scalable,
+              production-ready launches while balancing constraints.
+            </p>
           </div>
+          <div class="mt-8 grid sm:grid-cols-2 gap-4">
+            <div
+              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-5 rounded-lg flex flex-col justify-between hover:border-accent/20 transition-colors duration-300">
+              <h3 class="font-body font-semibold text-accent">1. Align</h3>
+              <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light leading-relaxed">Clarifying user needs,
+                business objectives, and technical constraints early.</p>
+            </div>
+            <div
+              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-5 rounded-lg flex flex-col justify-between hover:border-accent/20 transition-colors duration-300">
+              <h3 class="font-body font-semibold text-accent">2. Build</h3>
+              <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light leading-relaxed">Engineering resilient
+                frontend architectures and optimized API endpoints.</p>
+            </div>
+            <div
+              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-5 rounded-lg flex flex-col justify-between hover:border-accent/20 transition-colors duration-300">
+              <h3 class="font-body font-semibold text-accent">3. Refine</h3>
+              <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light leading-relaxed">Polishing interactions,
+                performance, and responsive details iteratively.</p>
+            </div>
+            <div
+              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-5 rounded-lg flex flex-col justify-between hover:border-accent/20 transition-colors duration-300">
+              <h3 class="font-body font-semibold text-accent">4. Launch</h3>
+              <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light leading-relaxed">Deploying with
+                automated testing, robust monitoring, and zero downtime.</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="120"
+          class="border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl flex flex-col justify-between h-full group transition-all duration-300 hover:border-violet/20">
           <div>
-            <label for="email" class="block font-body text-xs text-muted dark:text-muted-dark mb-2">Email</label>
-            <input id="email" name="email" type="email" required
-              class="w-full px-4 py-3  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors" />
+            <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">Selected impact</p>
+            <p class="text-muted dark:text-muted-dark leading-relaxed font-light mb-6">
+              Measurable improvements across key performance indicators on shipped client platforms.
+            </p>
+          </div>
+          <div class="space-y-5 flex-1 flex flex-col justify-center">
+            <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
+              <span class="text-sm text-muted dark:text-muted-dark">Faster load times</span>
+              <span class="font-body font-semibold text-ink dark:text-ink-dark">30-50%</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
+              <span class="text-sm text-muted dark:text-muted-dark">Accessibility coverage</span>
+              <span class="font-body font-semibold text-ink dark:text-ink-dark">WCAG-compliant</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
+              <span class="text-sm text-muted dark:text-muted-dark">Design consistency</span>
+              <span class="font-body font-semibold text-ink dark:text-ink-dark font-mono text-xs">Systemized</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-muted dark:text-muted-dark">Cross-team collaboration</span>
+              <span class="font-body font-semibold text-ink dark:text-ink-dark">High-trust</span>
+            </div>
           </div>
         </div>
-        <div>
-          <label for="message" class="block font-body text-xs text-muted dark:text-muted-dark mb-2">Message</label>
-          <textarea id="message" name="message" rows="4" required
-            class="w-full px-4 py-3  border border-line dark:border-line-dark bg-surface dark:bg-surface-dark focus:border-accent outline-none transition-colors resize-none"></textarea>
+      </div>
+    </section>
+
+    <section id="skills" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
+      <div class="max-w-6xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold" data-aos="fade-up">03 /
+          skills</p>
+        <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight mb-12" data-aos="fade-up">What I work with
+        </h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div data-aos="fade-up" data-aos-delay="0"
+            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-accent/30">
+            <div class="flex items-center gap-3 mb-5">
+              <div
+                class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 text-accent grid place-items-center transition-transform duration-300 group-hover:scale-110">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Languages</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-body text-xs">
+              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">JavaScript
+                (ES6+)</span>
+              <span
+                class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">TypeScript</span>
+              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">HTML5</span>
+              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">CSS3</span>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100"
+            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-violet/30">
+            <div class="flex items-center gap-3 mb-5">
+              <div
+                class="w-10 h-10 rounded-lg bg-violet/10 border border-violet/20 text-violet grid place-items-center transition-transform duration-300 group-hover:scale-110">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="14" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                </svg>
+              </div>
+              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Frameworks</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-body text-xs">
+              <span class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">React</span>
+              <span
+                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Next.js</span>
+              <span class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Tailwind
+                CSS</span>
+              <span
+                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Node.js</span>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200"
+            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-amber/30">
+            <div class="flex items-center gap-3 mb-5">
+              <div
+                class="w-10 h-10 rounded-lg bg-amber/10 border border-amber/20 text-amber grid place-items-center transition-transform duration-300 group-hover:scale-110">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+              </div>
+              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Tooling</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-body text-xs">
+              <span class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Git</span>
+              <span class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Vite</span>
+              <span class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Figma</span>
+              <span
+                class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Storybook</span>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="0"
+            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-accent/30">
+            <div class="flex items-center gap-3 mb-5">
+              <div
+                class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 text-accent grid place-items-center transition-transform duration-300 group-hover:scale-110">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+              </div>
+              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Testing</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-body text-xs">
+              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">Jest</span>
+              <span
+                class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">Playwright</span>
+              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">Testing
+                Library</span>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100"
+            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-violet/30">
+            <div class="flex items-center gap-3 mb-5">
+              <div
+                class="w-10 h-10 rounded-lg bg-violet/10 border border-violet/20 text-violet grid place-items-center transition-transform duration-300 group-hover:scale-110">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 17V5a2 2 0 0 1 2-2h8.5L20 8.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2z" />
+                  <polyline points="14 3 14 9 20 9" />
+                </svg>
+              </div>
+              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Backend</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-body text-xs">
+              <span
+                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Node.js</span>
+              <span
+                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Express</span>
+              <span
+                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Postgres</span>
+              <span
+                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Docker</span>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200"
+            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-amber/30">
+            <div class="flex items-center gap-3 mb-5">
+              <div
+                class="w-10 h-10 rounded-lg bg-amber/10 border border-amber/20 text-amber grid place-items-center transition-transform duration-300 group-hover:scale-110">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Craft</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-body text-xs">
+              <span
+                class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Accessibility</span>
+              <span class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Responsive
+                Design</span>
+              <span
+                class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Performance</span>
+            </div>
+          </div>
+
         </div>
-        <button type="submit"
-          class="justify-self-start px-6 py-3  bg-accent text-white font-medium text-sm shadow-soft hover:bg-accent-light transition-colors">
-          Send message
-        </button>
-        <p id="formNote" class="text-xs text-muted dark:text-muted-dark hidden">Thanks - this opens your email client to send the message.</p>
-      </form>
-    </div>
+      </div>
+    </section>
 
-  </div>
-</section>
+    <!-- ============ 6. PROJECTS ============ -->
+    <section id="projects" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
+      <div class="max-w-6xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold" data-aos="fade-up">05 /
+          projects</p>
+        <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight mb-12" data-aos="fade-up">Selected work</h2>
 
-<!-- ============ 6. FOOTER ============ -->
-<footer class="py-10 px-6 border-t border-line dark:border-line-dark">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted dark:text-muted-dark">
-    <p class="font-body">© <span id="year"></span> Alex Morgan. Built with modern full-stack web tools.</p>
-    <a href="#home" class="hover:text-accent transition-colors font-body">back to top <i class="fa-solid fa-arrow-up ml-2 text-xs align-middle" aria-hidden="true"></i></a>
-  </div>
-</footer>
+        <div class="grid md:grid-cols-2 gap-8">
 
-<!-- AOS script -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<!-- GSAP + ScrollTrigger -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-LmQG3Jm3t8Qjq1v6a2O7KqJ3fTjGv7r8wQ+4TnG1QX3gQ6x2Q0zKf6f9Q5y6p4ZPq0F6y1b9v7Q2b6Z3k1L/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-r2m9Q9m9Jx9Q1s3kY5h1jK9b6W0c5V9g3p1Q0v2L9k1M5n8G2p3Q7j6S5p1L2Q6w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+          <article data-aos="zoom-in" data-aos-delay="0"
+            class="card-lift group border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark rounded-xl transition-all duration-300 hover:border-accent/30 hover:shadow-lg">
+            <div class="relative h-60 overflow-hidden rounded-t-xl">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+                alt="Analytics dashboard interface on a laptop screen"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+              <span
+                class="absolute bottom-4 left-4 border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur rounded-sm">Fintech
+                Dashboard</span>
+            </div>
+            <div class="p-8">
+              <h3
+                class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark transition-colors group-hover:text-accent">
+                Fintech Dashboard</h3>
+              <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6 font-light">A real-time analytics
+                dashboard for a payments startup, rebuilt from a legacy stack into a fast, componentized React
+                experience.</p>
+              <div class="flex flex-wrap gap-2 font-body text-xs mb-6">
+                <span
+                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">React</span>
+                <span
+                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">TypeScript</span>
+                <span
+                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">D3.js</span>
+              </div>
+              <a href="#"
+                class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-light transition-colors group/link">
+                View case study
+                <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover/link:translate-x-1"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
 
-<!-- Vanilla-tilt (card tilt) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-<script>
-  AOS.init({
-    duration: 700,
-    once: true,
-    offset: 60,
-    easing: 'ease-out-cubic',
-  });
+          <article data-aos="zoom-in" data-aos-delay="100"
+            class="card-lift group border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark rounded-xl transition-all duration-300 hover:border-violet/30 hover:shadow-lg">
+            <div class="relative h-60 overflow-hidden rounded-t-xl">
+              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
+                alt="Modern e-commerce storefront on a device"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+              <span
+                class="absolute bottom-4 left-4 border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur rounded-sm">Commerce
+                Storefront</span>
+            </div>
+            <div class="p-8">
+              <h3
+                class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark transition-colors group-hover:text-violet">
+                Commerce Storefront</h3>
+              <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6 font-light">Headless storefront
+                built on Next.js with conversion-focused UX and a sharp lift in Core Web Vitals and page speed.</p>
+              <div class="flex flex-wrap gap-2 font-body text-xs mb-6">
+                <span
+                  class="px-2.5 py-1 border border-violet/20 bg-violet/5 text-violet dark:text-violet/90 rounded font-medium">Next.js</span>
+                <span
+                  class="px-2.5 py-1 border border-violet/20 bg-violet/5 text-violet dark:text-violet/90 rounded font-medium">Tailwind</span>
+                <span
+                  class="px-2.5 py-1 border border-violet/20 bg-violet/5 text-violet dark:text-violet/90 rounded font-medium">Shopify</span>
+              </div>
+              <a href="#"
+                class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-light transition-colors group/link">
+                View case study
+                <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover/link:translate-x-1"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
 
-  // Year
-  document.getElementById('year').textContent = new Date().getFullYear();
+          <article data-aos="zoom-in" data-aos-delay="0"
+            class="card-lift group border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark rounded-xl transition-all duration-300 hover:border-accent/30 hover:shadow-lg">
+            <div class="relative h-60 overflow-hidden rounded-t-xl">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+                alt="Design system components displayed in a clean workspace"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+              <span
+                class="absolute bottom-4 left-4 border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur rounded-sm">Component
+                Library</span>
+            </div>
+            <div class="p-8">
+              <h3
+                class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark transition-colors group-hover:text-accent">
+                Component Library</h3>
+              <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6 font-light">An open-source,
+                accessible React component library documented in Storybook and adopted across multiple product teams.
+              </p>
+              <div class="flex flex-wrap gap-2 font-body text-xs mb-6">
+                <span
+                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">React</span>
+                <span
+                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">Radix</span>
+                <span
+                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">Storybook</span>
+              </div>
+              <a href="#"
+                class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-light transition-colors group/link">
+                View case study
+                <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover/link:translate-x-1"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
 
-  // Scroll progress
-  const progressBar = document.getElementById('scrollProgress');
-  const updateProgress = () => {
-    const scrollTop = window.scrollY;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const ratio = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
-    progressBar.style.transform = `scaleX(${Math.min(Math.max(ratio, 0), 1)})`;
-  };
-  updateProgress();
-  window.addEventListener('scroll', updateProgress, { passive: true });
+          <article data-aos="zoom-in" data-aos-delay="100"
+            class="card-lift group border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark rounded-xl transition-all duration-300 hover:border-amber/30 hover:shadow-lg">
+            <div class="relative h-60 overflow-hidden rounded-t-xl">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+                alt="Developer workspace with screens and interface prototypes"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+              <span
+                class="absolute bottom-4 left-4 border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur rounded-sm">Booking
+                Platform</span>
+            </div>
+            <div class="p-8">
+              <h3
+                class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark transition-colors group-hover:text-amber">
+                Booking Platform</h3>
+              <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6 font-light">A multi-step booking
+                flow with optimistic UI updates and offline support, built for a travel platform serving hundreds of
+                thousands of users.</p>
+              <div class="flex flex-wrap gap-2 font-body text-xs mb-6">
+                <span
+                  class="px-2.5 py-1 border border-amber/20 bg-amber/5 text-amber dark:text-amber/90 rounded font-medium">Vue</span>
+                <span
+                  class="px-2.5 py-1 border border-amber/20 bg-amber/5 text-amber dark:text-amber/90 rounded font-medium">Pinia</span>
+                <span
+                  class="px-2.5 py-1 border border-amber/20 bg-amber/5 text-amber dark:text-amber/90 rounded font-medium">PWA</span>
+              </div>
+              <a href="#"
+                class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-light transition-colors group/link">
+                View case study
+                <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover/link:translate-x-1"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
 
-  const smoothScroll = (href) => {
-    if (!href || href === '#') return;
-    const target = document.querySelector(href);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+        </div>
+      </div>
+    </section>
 
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const href = link.getAttribute('href');
-      if (href && href.startsWith('#') && href.length > 1) {
-        event.preventDefault();
-        smoothScroll(href);
-      }
-    });
-  });
+    <!-- ============ 7. CONTACT ============ -->
+    <section id="contact"
+      class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.3fr] gap-12 lg:gap-16">
 
-  // Animated counters
-  const counters = document.querySelectorAll('[data-counter]');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = Number(el.dataset.target || 0);
-      const suffix = el.dataset.suffix || '';
-      const duration = 1000;
-      const start = performance.now();
-      const step = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const value = Math.round(target * eased);
-        el.textContent = `${value}${suffix}`;
-        if (progress < 1) requestAnimationFrame(step);
+        <div data-aos="fade-right" class="flex flex-col justify-center">
+          <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">06 / contact</p>
+          <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-ink dark:text-ink-dark">Let's
+            build something memorable.</h2>
+          <p class="text-muted dark:text-muted-dark leading-relaxed mb-8 font-light">
+            Whether you need a polished product launch, frontend + backend development, or a full-stack partner to
+            elevate an existing experience, I'd love to help.
+          </p>
+          <div class="space-y-4 font-body text-sm">
+            <a href="mailto:alex.morgan@example.com"
+              class="inline-flex items-center gap-3 text-ink dark:text-ink-dark hover:text-accent transition-colors group">
+              <span
+                class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 text-accent grid place-items-center transition-transform duration-300 group-hover:scale-110">
+                <i class="fa-regular fa-envelope text-base"></i>
+              </span>
+              <span class="font-medium">alex.morgan@example.com</span>
+            </a>
+
+            <div class="flex flex-wrap gap-5 pt-4 border-t border-line dark:border-line-dark">
+              <a href="#"
+                class="inline-flex items-center text-muted dark:text-muted-dark hover:text-accent transition-colors group">
+                <i class="fa-brands fa-github text-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+                GitHub
+              </a>
+              <a href="#"
+                class="inline-flex items-center text-muted dark:text-muted-dark hover:text-accent transition-colors group">
+                <i
+                  class="fa-brands fa-linkedin text-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+                LinkedIn
+              </a>
+              <a href="#"
+                class="inline-flex items-center text-muted dark:text-muted-dark hover:text-accent transition-colors group">
+                <i
+                  class="fa-brands fa-twitter text-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+                Twitter
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100"
+          class="border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+          <form class="grid gap-5" onsubmit="return handleContactSubmit(event)">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name"
+                  class="block font-body text-xs text-muted dark:text-muted-dark mb-2 font-medium">Name</label>
+                <input id="name" name="name" type="text" required
+                  class="w-full px-4 py-3 border border-line dark:border-line-dark bg-surface/50 dark:bg-surface-dark/50 rounded-lg focus:border-accent outline-none transition-colors text-sm" />
+              </div>
+              <div>
+                <label for="email"
+                  class="block font-body text-xs text-muted dark:text-muted-dark mb-2 font-medium">Email</label>
+                <input id="email" name="email" type="email" required
+                  class="w-full px-4 py-3 border border-line dark:border-line-dark bg-surface/50 dark:bg-surface-dark/50 rounded-lg focus:border-accent outline-none transition-colors text-sm" />
+              </div>
+            </div>
+            <div>
+              <label for="message"
+                class="block font-body text-xs text-muted dark:text-muted-dark mb-2 font-medium">Message</label>
+              <textarea id="message" name="message" rows="4" required
+                class="w-full px-4 py-3 border border-line dark:border-line-dark bg-surface/50 dark:bg-surface-dark/50 rounded-lg focus:border-accent outline-none transition-colors resize-none text-sm"></textarea>
+            </div>
+            <button type="submit"
+              class="justify-self-start px-6 py-3.5 bg-accent text-[#08080a] font-semibold text-sm rounded-lg shadow-soft hover:bg-accent-light transition-all duration-300 hover:-translate-y-0.5">
+              Send message
+            </button>
+            <p id="formNote" class="text-xs text-muted dark:text-muted-dark hidden">Thanks - this opens your email
+              client to send the message.</p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ 6. FOOTER ============ -->
+    <footer class="py-10 px-6 border-t border-line dark:border-line-dark">
+      <div
+        class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted dark:text-muted-dark">
+        <p class="font-body">© <span id="year"></span> Alex Morgan. Built with modern full-stack web tools.</p>
+        <a href="#home" class="hover:text-accent transition-colors font-body">back to top <i
+            class="fa-solid fa-arrow-up ml-2 text-xs align-middle" aria-hidden="true"></i></a>
+      </div>
+    </footer>
+
+    <!-- AOS script -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-LmQG3Jm3t8Qjq1v6a2O7KqJ3fTjGv7r8wQ+4TnG1QX3gQ6x2Q0zKf6f9Q5y6p4ZPq0F6y1b9v7Q2b6Z3k1L/Q=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      integrity="sha512-r2m9Q9m9Jx9Q1s3kY5h1jK9b6W0c5V9g3p1Q0v2L9k1M5n8G2p3Q7j6S5p1L2Q6w==" crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+
+    <!-- Vanilla-tilt (card tilt) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script>
+      AOS.init({
+        duration: 700,
+        once: true,
+        offset: 60,
+        easing: 'ease-out-cubic',
+      });
+
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Scroll progress
+      const progressBar = document.getElementById('scrollProgress');
+      const updateProgress = () => {
+        const scrollTop = window.scrollY;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+        progressBar.style.transform = `scaleX(${Math.min(Math.max(ratio, 0), 1)})`;
       };
-      requestAnimationFrame(step);
-      counterObserver.unobserve(el);
-    });
-  }, { threshold: 0.7 });
-  counters.forEach((counter) => counterObserver.observe(counter));
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
 
-  // Theme toggle (in-memory) — explicitly show correct icon for current theme
-  const root = document.documentElement;
-  const sunIcon = document.getElementById('iconSun');
-  const moonIcon = document.getElementById('iconMoon');
+      const smoothScroll = (href) => {
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
 
-  function setTheme(dark) {
-    if (dark) {
-      root.classList.add('dark');
-      sunIcon.classList.remove('hidden');
-      moonIcon.classList.add('hidden');
-    } else {
-      root.classList.remove('dark');
-      sunIcon.classList.add('hidden');
-      moonIcon.classList.remove('hidden');
-    }
-  }
-
-  // Respect markup default (if <html> has class="dark")
-  setTheme(root.classList.contains('dark'));
-
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    setTheme(!root.classList.contains('dark'));
-  });
-
-  // Mobile menu
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-  mobileMenu.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => mobileMenu.classList.add('hidden'))
-  );
-
-  // Contact form -> mailto (no backend)
-  function handleContactSubmit(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n- ${name} (${email})`);
-    window.location.href = `mailto:alex.morgan@example.com?subject=${subject}&body=${body}`;
-    document.getElementById('formNote').classList.remove('hidden');
-    return false;
-  }
-
-  // ---- Typed headline (vanilla) ----
-  (function() {
-    const phrases = [
-      'effortless',
-      'fast',
-      'unmistakably modern',
-      'delightfully animated'
-    ];
-    const el = document.getElementById('typed');
-    if (!el) return;
-    let idx = 0; let char = 0; let forward = true; let delay = 80;
-    function tick() {
-      const phrase = phrases[idx];
-      if (forward) {
-        el.textContent = phrase.slice(0, ++char);
-        if (char === phrase.length) { forward = false; setTimeout(tick, 900); return; }
-      } else {
-        el.textContent = phrase.slice(0, --char);
-        if (char === 0) { forward = true; idx = (idx + 1) % phrases.length; setTimeout(tick, 200); return; }
-      }
-      setTimeout(tick, delay);
-    }
-    // Respect reduced motion
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq && mq.matches) { el.textContent = phrases[0]; return; }
-    tick();
-  })();
-
-  // ---- Hero particles (lightweight) ----
-  (function() {
-    const canvas = document.getElementById('heroParticles');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = innerWidth;
-    let h = canvas.height = innerHeight;
-    const particles = [];
-    const count = Math.round(Math.min(80, Math.max(24, w / 18)));
-
-    function rand(min, max) { return Math.random() * (max - min) + min; }
-
-    function make() {
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: rand(0, w),
-          y: rand(0, h),
-          r: rand(0.6, 2.6),
-          vx: rand(-0.15, 0.15),
-          vy: rand(-0.05, 0.05),
-          hue: rand(150, 270),
-          alpha: rand(0.06, 0.22)
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#') && href.length > 1) {
+            event.preventDefault();
+            smoothScroll(href);
+          }
         });
+      });
+
+      // Animated counters
+      const counters = document.querySelectorAll('[data-counter]');
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = Number(el.dataset.target || 0);
+          const suffix = el.dataset.suffix || '';
+          const duration = 1000;
+          const start = performance.now();
+          const step = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.round(target * eased);
+            el.textContent = `${value}${suffix}`;
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+          counterObserver.unobserve(el);
+        });
+      }, { threshold: 0.7 });
+      counters.forEach((counter) => counterObserver.observe(counter));
+
+      // Theme toggle (in-memory) — explicitly show correct icon for current theme
+      const root = document.documentElement;
+      const sunIcon = document.getElementById('iconSun');
+      const moonIcon = document.getElementById('iconMoon');
+
+      function setTheme(dark) {
+        if (dark) {
+          root.classList.add('dark');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+        } else {
+          root.classList.remove('dark');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+        }
       }
-    }
 
-    function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
-    window.addEventListener('resize', resize);
+      // Respect markup default (if <html> has class="dark")
+      setTheme(root.classList.contains('dark'));
 
-    function draw() {
-      ctx.clearRect(0,0,w,h);
-      for (const p of particles) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < -10) p.x = w + 10; if (p.x > w + 10) p.x = -10;
-        if (p.y < -10) p.y = h + 10; if (p.y > h + 10) p.y = -10;
-        ctx.beginPath();
-        ctx.fillStyle = `hsla(${p.hue},70%,60%,${p.alpha})`;
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        setTheme(!root.classList.contains('dark'));
+      });
+
+      // Mobile menu
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      mobileMenu.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => mobileMenu.classList.add('hidden'))
+      );
+
+      // Contact form -> mailto (no backend)
+      function handleContactSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+        const body = encodeURIComponent(`${message}\n\n- ${name} (${email})`);
+        window.location.href = `mailto:alex.morgan@example.com?subject=${subject}&body=${body}`;
+        document.getElementById('formNote').classList.remove('hidden');
+        return false;
       }
-      requestAnimationFrame(draw);
-    }
 
-    // Reduced motion fallback
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq && mq.matches) return;
+      // ---- Typed headline (vanilla) ----
+      (function () {
+        const phrases = [
+          'effortless',
+          'fast',
+          'unmistakably modern',
+          'delightfully animated'
+        ];
+        const el = document.getElementById('typed');
+        if (!el) return;
+        let idx = 0; let char = 0; let forward = true; let delay = 80;
+        function tick() {
+          const phrase = phrases[idx];
+          if (forward) {
+            el.textContent = phrase.slice(0, ++char);
+            if (char === phrase.length) { forward = false; setTimeout(tick, 900); return; }
+          } else {
+            el.textContent = phrase.slice(0, --char);
+            if (char === 0) { forward = true; idx = (idx + 1) % phrases.length; setTimeout(tick, 200); return; }
+          }
+          setTimeout(tick, delay);
+        }
+        // Respect reduced motion
+        const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (mq && mq.matches) { el.textContent = phrases[0]; return; }
+        tick();
+      })();
 
-    make(); draw();
-  })();
+      // ---- Hero particles (lightweight) ----
+      (function () {
+        const canvas = document.getElementById('heroParticles');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w = canvas.width = innerWidth;
+        let h = canvas.height = innerHeight;
+        const particles = [];
+        const count = Math.round(Math.min(80, Math.max(24, w / 18)));
 
-  // ---- GSAP scroll animations ----
-  (function() {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-    gsap.registerPlugin(ScrollTrigger);
+        function rand(min, max) { return Math.random() * (max - min) + min; }
 
-    // Hero entrance
-    const heroTimeline = gsap.timeline();
-    heroTimeline.from('.hero-content', {
-      y: 32,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-      stagger: 0.12,
-    });
-    heroTimeline.from('.hero-card', {
-      x: 24,
-      opacity: 0,
-      duration: 0.9,
-      ease: 'power3.out',
-    }, '<0.2');
+        function make() {
+          for (let i = 0; i < count; i++) {
+            particles.push({
+              x: rand(0, w),
+              y: rand(0, h),
+              r: rand(0.6, 2.6),
+              vx: rand(-0.15, 0.15),
+              vy: rand(-0.05, 0.05),
+              hue: rand(150, 270),
+              alpha: rand(0.06, 0.22)
+            });
+          }
+        }
 
-    // Fade-up sections with improved stagger
-    gsap.utils.toArray('[data-aos]').forEach((el) => {
-      const animation = el.getAttribute('data-aos') || 'fade-up';
-      const delay = Number(el.getAttribute('data-aos-delay') || 0) / 1000;
-      gsap.from(el, {
-        y: animation.includes('up') ? 24 : 0,
-        x: animation.includes('left') ? -24 : animation.includes('right') ? 24 : 0,
-        opacity: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        delay,
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
-        },
-      });
-    });
+        function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
+        window.addEventListener('resize', resize);
 
-    // Reveal cards with flow
-    gsap.utils.toArray('.card-lift').forEach((card) => {
-      gsap.from(card, {
-        y: 30,
-        opacity: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 92%',
-          toggleActions: 'play none none none',
-        },
-      });
-    });
+        function draw() {
+          ctx.clearRect(0, 0, w, h);
+          for (const p of particles) {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < -10) p.x = w + 10; if (p.x > w + 10) p.x = -10;
+            if (p.y < -10) p.y = h + 10; if (p.y > h + 10) p.y = -10;
+            ctx.beginPath();
+            ctx.fillStyle = `hsla(${p.hue},70%,60%,${p.alpha})`;
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          requestAnimationFrame(draw);
+        }
 
-    // Projects subtle image parallax
-    gsap.to('.card-lift img', {
-      yPercent: 8,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.card-lift',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 0.6,
-      },
-    });
+        // Reduced motion fallback
+        const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (mq && mq.matches) return;
 
-    // Section heading accent motion
-    gsap.utils.toArray('section h2').forEach((heading) => {
-      gsap.from(heading, {
-        y: 24,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: heading,
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-      });
-    });
-  })();
+        make(); draw();
+      })();
 
-  // ---- VanillaTilt on card-lift ----
-  (function() {
-    const nodes = document.querySelectorAll('.card-lift');
-    if (!nodes.length || typeof VanillaTilt === 'undefined') return;
-    nodes.forEach(n => VanillaTilt.init(n, { max: 8, speed: 400, glare: false, scale: 1.01 }));
-  })();
-</script>
+      // ---- GSAP scroll animations ----
+      (function () {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero entrance
+        const heroTimeline = gsap.timeline();
+        heroTimeline.from('.hero-content', {
+          y: 32,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.12,
+        });
+        heroTimeline.from('.hero-card', {
+          x: 24,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+        }, '<0.2');
+
+        // Fade-up sections with improved stagger
+        gsap.utils.toArray('[data-aos]').forEach((el) => {
+          const animation = el.getAttribute('data-aos') || 'fade-up';
+          const delay = Number(el.getAttribute('data-aos-delay') || 0) / 1000;
+          gsap.from(el, {
+            y: animation.includes('up') ? 24 : 0,
+            x: animation.includes('left') ? -24 : animation.includes('right') ? 24 : 0,
+            opacity: 0,
+            duration: 0.85,
+            ease: 'power3.out',
+            delay,
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+          });
+        });
+
+        // Reveal cards with flow
+        gsap.utils.toArray('.card-lift').forEach((card) => {
+          gsap.from(card, {
+            y: 30,
+            opacity: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 92%',
+              toggleActions: 'play none none none',
+            },
+          });
+        });
+
+        // Projects subtle image parallax
+        gsap.to('.card-lift img', {
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.card-lift',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.6,
+          },
+        });
+
+        // Section heading accent motion
+        gsap.utils.toArray('section h2').forEach((heading) => {
+          gsap.from(heading, {
+            y: 24,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: heading,
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+            },
+          });
+        });
+      })();
+
+      // ---- VanillaTilt on card-lift ----
+      (function () {
+        const nodes = document.querySelectorAll('.card-lift');
+        if (!nodes.length || typeof VanillaTilt === 'undefined') return;
+        nodes.forEach(n => VanillaTilt.init(n, { max: 8, speed: 400, glare: false, scale: 1.01 }));
+      })();
+    </script>
 
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
