@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -22,7 +22,6 @@
   <meta property="og:description"
     content="Full-stack developer building polished interfaces, scalable APIs, and reliable web applications." />
   <meta property="og:site_name" content="Alex Morgan Portfolio" />
-
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Alex Morgan - Full-stack Developer" />
   <meta name="twitter:description"
@@ -36,114 +35,37 @@
       "jobTitle": "Full-stack Developer",
       "description": "Full-stack developer building polished interfaces, scalable APIs, and reliable web applications.",
       "email": "alex.morgan@example.com",
-      "knowsAbout": [
-        "JavaScript",
-        "TypeScript",
-        "React",
-        "Next.js",
-        "Node.js",
-        "REST APIs",
-        "GraphQL",
-        "Web performance",
-        "Accessibility"
-      ]
+      "knowsAbout": ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "REST APIs", "GraphQL", "Web performance", "Accessibility"]
     }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-
-  <!-- AOS - Animate On Scroll -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-
-  <!-- Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <!-- Tailwind is used for layout utilities only. Colors and components live in styles.css -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            bg: { DEFAULT: '#e9e5dc', dark: '#08080a' },
-            surface: { DEFAULT: '#f7f4ee', dark: '#111114' },
-            ink: { DEFAULT: '#1a1a1a', dark: '#f5f5f7' },
-            muted: { DEFAULT: '#6b7280', dark: '#9ca3af' },
-            line: { DEFAULT: '#d5cfc4', dark: '#1e1e24' },
-            accent: { DEFAULT: '#c5a880', light: '#d9c5b0' },
-            amber: '#a68d75',
-            violet: '#bfa890',
-          },
-          fontFamily: {
-            display: ['Inter', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-            mono: ['Inter', 'sans-serif'],
-          },
-          boxShadow: {
-            soft: '0 1px 2px rgba(15,23,42,0.04), 0 12px 32px -12px rgba(15,23,42,0.12)',
-            softDark: '0 1px 2px rgba(0,0,0,0.2), 0 20px 40px -16px rgba(0,0,0,0.5)',
-          },
-        }
-      }
-    }
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
   </script>
-
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body class="bg-bg dark:bg-bg-dark text-ink dark:text-ink-dark font-body antialiased transition-colors duration-300">
-  <div class="relative overflow-hidden">
-    <div id="scrollProgress"
-      class="fixed top-0 left-0 z-[60] h-1 w-full origin-left scale-x-0 bg-accent transition-transform duration-200">
-    </div>
-    <div class="grid-canvas pointer-events-none fixed inset-0 -z-10"></div>
-    <div class="noise -z-10"></div>
-    <div class="pointer-events-none absolute inset-0 overflow-hidden">
-      <div class="absolute left-[-8%] top-10 h-72 w-72  bg-accent/20 blur-[120px]"></div>
-      <div class="absolute right-[-5%] top-28 h-80 w-80  bg-violet/20 blur-[140px]"></div>
-    </div>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="scrollProgress"></div>
+  <div class="grid-canvas" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <canvas id="heroParticles" aria-hidden="true"></canvas>
 
-    <!-- Particle canvas (hero) -->
-    <canvas id="heroParticles" class="pointer-events-none fixed inset-0 -z-10"></canvas>
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <nav class="wrap nav-in" aria-label="Main">
+      <a href="#home" class="logo">alex<span>.</span>morgan</a>
 
-    <!-- ============ NAV ============ -->
-    <header
-      class="fixed top-0 inset-x-0 z-50 border-b border-line dark:border-line-dark bg-bg/80 dark:bg-bg-dark/80 backdrop-blur-md">
-      <nav class="max-w-6xl mx-auto px-6 py-3 min-h-16 flex items-center justify-between gap-4">
-        <a href="#home" class="font-body font-semibold text-lg tracking-tight whitespace-nowrap">
-          alex<span class="text-accent">.</span>morgan
-        </a>
-
-        <div
-          class="hidden md:flex items-center gap-4 lg:gap-6 font-body text-[12px] lg:text-[13px] text-muted dark:text-muted-dark">
-          <a href="#about" class="hover:text-ink dark:hover:text-ink-dark transition-colors">01 / about</a>
-          <a href="#services" class="hover:text-ink dark:hover:text-ink-dark transition-colors">02 / services</a>
-          <a href="#journey" class="hover:text-ink dark:hover:text-ink-dark transition-colors">03 / journey</a>
-          <a href="#skills" class="hover:text-ink dark:hover:text-ink-dark transition-colors">04 / skills</a>
-          <a href="#projects" class="hover:text-ink dark:hover:text-ink-dark transition-colors">05 / projects</a>
-          <a href="#contact" class="hover:text-ink dark:hover:text-ink-dark transition-colors">06 / contact</a>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <button id="themeToggle" aria-label="Toggle dark mode"
-            class="w-9 h-9 grid place-items-center border border-line dark:border-line-dark hover:border-accent transition-colors rounded-xl">
-            <i id="iconSun" class="fa-solid fa-sun hidden text-base"></i>
-            <i id="iconMoon" class="fa-solid fa-moon text-base"></i>
-          </button>
-          <button id="menuToggle" class="md:hidden w-9 h-9 grid place-items-center" aria-label="Open menu">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </nav>
-
-      <div id="mobileMenu"
-        class="hidden md:hidden border-t border-line dark:border-line-dark px-6 py-4 flex flex-col gap-4 font-body text-sm bg-bg dark:bg-bg-dark">
+      <div class="nav-links hidden md:flex items-center gap-5 lg:gap-6">
         <a href="#about">01 / about</a>
         <a href="#services">02 / services</a>
         <a href="#journey">03 / journey</a>
@@ -151,747 +73,440 @@
         <a href="#projects">05 / projects</a>
         <a href="#contact">06 / contact</a>
       </div>
-    </header>
+
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode">
+          <i id="iconSun" class="fa-solid fa-sun"></i>
+          <i id="iconMoon" class="fa-solid fa-moon hidden"></i>
+        </button>
+        <button id="menuToggle" class="icon-btn md:hidden" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobileMenu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="mobile-menu hidden md:hidden">
+      <div class="wrap flex flex-col gap-4 py-5 text-sm">
+        <a href="#about">01 / about</a>
+        <a href="#services">02 / services</a>
+        <a href="#journey">03 / journey</a>
+        <a href="#skills">04 / skills</a>
+        <a href="#projects">05 / projects</a>
+        <a href="#contact">06 / contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
 
     <!-- ============ 1. HERO ============ -->
-    <section id="home" class="hero-glow glow scan-wrap relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32 px-6">
-      <div class="hero-grid"></div>
-      <div class="scan-line"></div>
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
+    <section id="home" class="hero">
+      <div class="orb orb-a" data-speed="-90"></div>
+      <div class="orb orb-b" data-speed="70"></div>
 
-        <div class="hero-content" data-aos="fade-up">
-          <div
-            class="inline-flex items-center gap-2 border border-accent/20 bg-accent/5 px-3 py-1.5 text-[11px] uppercase tracking-wider font-medium text-accent soft-ring rounded-xl">
-            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Available for select engagements
-          </div>
-          <p class="font-body text-xs uppercase tracking-widest text-accent mt-6 font-semibold">// Full-Stack Software
-            Engineer</p>
-          <h1 class="font-body text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight mt-3">
-            Building robust web applications from polished interfaces to scalable <span class="text-accent">APIs</span>
+      <div class="wrap hero-inner grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
+        <div>
+          <div class="badge hero-fade"><span class="dot"></span>Available for select engagements</div>
+          <p class="eyebrow hero-fade" style="margin-top:1.5rem">// Full-Stack Software Engineer</p>
+          <h1 class="h1">
+            <span class="line"><span class="line-in">Building robust web applications</span></span>
+            <span class="line"><span class="line-in">from polished interfaces to</span></span>
+            <span class="line"><span class="line-in">scalable <em>APIs</em></span></span>
           </h1>
-          <p class="mt-6 text-muted dark:text-muted-dark text-lg max-w-2xl leading-relaxed font-light">
+          <p class="lead hero-fade" style="margin-top:1.5rem;font-size:1.125rem;max-width:36rem">
             I engineer high-performance frontend experiences backed by clean, secure server architecture and
             deployment-ready cloud infrastructure.
           </p>
 
-          <div class="mt-8 flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="160">
-            <a href="#projects"
-              class="px-6 py-3.5 bg-accent text-[#08080a] font-semibold text-sm shadow-soft hover:bg-accent-light transition-all duration-300 hover:-translate-y-0.5 rounded-xl">
-              Explore Projects
-            </a>
-            <a href="#contact"
-              class="px-6 py-3.5 border border-line dark:border-line-dark font-medium text-sm hover:border-accent hover:text-accent transition-all duration-300 hover:-translate-y-0.5 rounded-xl">
-              Get in Touch
-            </a>
+          <div class="hero-fade mt-8 flex flex-wrap gap-4">
+            <a href="#projects" class="btn btn-primary">Explore Projects</a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
           </div>
 
-          <div class="mt-8 flex flex-wrap gap-3 font-body text-xs font-medium" data-aos="fade-up" data-aos-delay="220">
-            <span
-              class="border border-accent/20 bg-accent/5 dark:bg-accent/10 text-accent dark:text-accent-light px-3 py-1.5 rounded-xl">React
-              / Next.js</span>
-            <span
-              class="border border-violet/20 bg-violet/5 dark:bg-violet/10 text-violet dark:text-violet/90 px-3 py-1.5 rounded-xl">Node.js
-              / Express</span>
-            <span
-              class="border border-amber/20 bg-amber/5 dark:bg-amber/10 text-amber dark:text-amber/90 px-3 py-1.5 rounded-xl">REST
-              &amp; GraphQL APIs</span>
-            <span
-              class="border border-line dark:border-line-dark bg-surface/30 px-3 py-1.5 rounded-xl text-ink dark:text-ink-dark">AWS
-              &amp; Docker</span>
+          <div class="hero-fade chips mt-8">
+            <span class="chip">React / Next.js</span>
+            <span class="chip t-violet">Node.js / Express</span>
+            <span class="chip t-amber">REST &amp; GraphQL APIs</span>
+            <span class="chip chip-plain">AWS &amp; Docker</span>
           </div>
 
-          <div class="mt-12 grid grid-cols-3 gap-6 max-w-xl" data-aos="fade-up" data-aos-delay="280">
-            <div class="border-l-2 border-accent pl-4">
-              <p class="text-3xl font-body font-bold text-ink dark:text-ink-dark">4+</p>
-              <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">Years Experience</p>
-            </div>
-            <div class="border-l-2 border-accent pl-4">
-              <p class="text-3xl font-body font-bold text-ink dark:text-ink-dark">30+</p>
-              <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">Projects Launched</p>
-            </div>
-            <div class="border-l-2 border-accent pl-4">
-              <p class="text-3xl font-body font-bold text-ink dark:text-ink-dark">12</p>
-              <p class="text-xs font-body text-muted dark:text-muted-dark mt-1">Happy Clients</p>
-            </div>
+          <div class="hero-fade mt-12 grid grid-cols-3 gap-6 max-w-xl">
+            <div class="stat"><b>4+</b><span>Years Experience</span></div>
+            <div class="stat"><b>30+</b><span>Projects Launched</span></div>
+            <div class="stat"><b>12</b><span>Happy Clients</span></div>
           </div>
         </div>
 
+        <!-- decorative visual: built only from content already on the page -->
+        <div class="hv hidden lg:block" aria-hidden="true">
+          <div class="hv-card hv-main" data-tilt>
+            <p class="eyebrow">Currently</p>
+            <p class="hv-title">Senior Full-stack Developer</p>
+            <p class="lead" style="margin:.25rem 0 0;font-size:.875rem">Northstar Labs · 2022 - Present</p>
+          </div>
+          <div class="hv-card hv-code" data-tilt>
+            <pre><span class="c-mute">GET</span> /api/alex-morgan
+{
+  <span class="c-key">"role"</span>: <span class="c-str">"Full-stack Developer"</span>,
+  <span class="c-key">"experience"</span>: <span class="c-str">"4+ years"</span>,
+  <span class="c-key">"available"</span>: <span class="c-str">true</span>
+}</pre>
+          </div>
+          <div class="hv-card hv-stat" data-tilt>
+            <p class="hv-big">30-50%</p>
+            <p class="lead" style="margin:0;font-size:.8rem">Faster load times</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ 2. ABOUT ============ -->
-    <section id="about" class="py-24 px-6 border-t border-line dark:border-line-dark relative">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center">
+    <!-- ============ TICKER ============ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Node.js</span>
+        <span>Express</span><span>Postgres</span><span>Docker</span><span>AWS</span><span>GraphQL</span>
+        <span>Tailwind CSS</span><span>Accessibility</span><span>Performance</span>
+      </div>
+    </div>
 
-        <div data-aos="fade-right" class="space-y-6">
+    <!-- ============ 2. ABOUT ============ -->
+    <section id="about" class="section">
+      <div class="wrap grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-start">
+        <div class="lg:sticky lg:top-28 space-y-6" data-reveal>
           <div>
-            <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">01 / about</p>
-            <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
-              Bridging the gap between design vision and backend execution.
-            </h2>
+            <p class="eyebrow">01 / about</p>
+            <h2 class="h2">Bridging the gap between design vision and backend execution.</h2>
           </div>
-          <p class="text-muted dark:text-muted-dark leading-relaxed font-light text-base">
+          <p class="lead" data-words>
             I specialize in building clean, scalable interfaces backed by optimized systems. I focus on details that
             often go unnoticed but are critical for creating premium digital products.
           </p>
-          <div class="flex flex-wrap gap-2.5">
-            <span
-              class="border border-accent/20 bg-accent/5 dark:bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent dark:text-accent-light rounded-xl flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> API-First Design
-            </span>
-            <span
-              class="border border-violet/20 bg-violet/5 dark:bg-violet/10 px-3 py-1.5 text-xs font-medium text-violet dark:text-violet/90 rounded-xl flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-violet"></span> Cloud Architecture
-            </span>
-            <span
-              class="border border-amber/20 bg-amber/5 dark:bg-amber/10 px-3 py-1.5 text-xs font-medium text-amber dark:text-amber/90 rounded-xl flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber"></span> Performance Optimization
-            </span>
+          <div class="chips">
+            <span class="chip"><i class="bullet"></i>API-First Design</span>
+            <span class="chip t-violet"><i class="bullet"></i>Cloud Architecture</span>
+            <span class="chip t-amber"><i class="bullet"></i>Performance Optimization</span>
           </div>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="100" class="grid gap-6">
-          <div
-            class="border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-6 rounded-xl shadow-sm">
-            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
-              Over the last four years, I've helped startups and established engineering teams deliver high-performance
-              web solutions, reducing load times and standardizing design systems.
+        <div class="grid gap-6" data-stagger>
+          <div class="card static">
+            <p class="lead" style="margin:0;font-size:.9rem">
+              Over the last four years, I've helped startups and established engineering teams deliver
+              high-performance web solutions, reducing load times and standardizing design systems.
             </p>
           </div>
-
           <div class="grid grid-cols-2 gap-6">
-            <div
-              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-6 rounded-xl flex flex-col justify-center">
-              <p class="text-4xl font-bold text-ink dark:text-ink-dark tracking-tight" data-counter data-target="4"
-                data-suffix="+">0</p>
-              <p class="text-xs font-medium text-muted dark:text-muted-dark uppercase tracking-wider mt-2">Years
-                Experience</p>
+            <div class="card static">
+              <p class="big" data-counter data-target="4" data-suffix="+">0</p>
+              <p class="cap">Years Experience</p>
             </div>
-            <div
-              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-6 rounded-xl flex flex-col justify-center">
-              <p class="text-4xl font-bold text-ink dark:text-ink-dark tracking-tight" data-counter data-target="30"
-                data-suffix="+">0</p>
-              <p class="text-xs font-medium text-muted dark:text-muted-dark uppercase tracking-wider mt-2">Projects
-                Shipped</p>
+            <div class="card static">
+              <p class="big" data-counter data-target="30" data-suffix="+">0</p>
+              <p class="cap">Projects Shipped</p>
             </div>
           </div>
-
-          <div class="border border-l-4 border-line dark:border-line-dark border-l-accent bg-accent/5 p-6 rounded-r-xl">
-            <p class="text-sm italic leading-relaxed text-muted dark:text-muted-dark font-light">
-              "The best interfaces feel obvious. I focus on making that feeling real through clear structure, thoughtful
-              motion, and reliable implementation."
-            </p>
-          </div>
+          <blockquote class="quote">
+            "The best interfaces feel obvious. I focus on making that feeling real through clear structure, thoughtful
+            motion, and reliable implementation."
+          </blockquote>
         </div>
-
       </div>
     </section>
 
-    <section id="services"
-      class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
-      <div class="max-w-6xl mx-auto">
-        <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold" data-aos="fade-up">02 /
-          services</p>
-        <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight mb-12" data-aos="fade-up">What I help teams
-          ship</h2>
+    <!-- ============ 3. SERVICES ============ -->
+    <section id="services" class="section band">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>02 / services</p>
+        <h2 class="h2 mb-12" data-reveal>What I help teams ship</h2>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <article data-aos="fade-up"
-            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative overflow-hidden group transition-all duration-300 hover:border-accent/30">
-            <div
-              class="w-12 h-12 rounded-xl bg-accent/10 text-accent border border-accent/25 grid place-items-center mb-6 transition-transform duration-300 group-hover:scale-110">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <div class="grid md:grid-cols-3 gap-8" data-stagger>
+          <article class="card t-accent">
+            <div class="icon mb-6">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M4 7h16M7 3v4M17 3v4M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12" />
               </svg>
             </div>
-            <h3 class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark">Platform Architecture</h3>
-            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
-              Designing optimized system architectures, API schemas, and server-side logic that connect seamlessly with
-              front-end interfaces to support high concurrency.
-            </p>
+            <h3 class="h3">Platform Architecture</h3>
+            <p class="lead small">Designing optimized system architectures, API schemas, and server-side logic that
+              connect seamlessly with front-end interfaces to support high concurrency.</p>
           </article>
-
-          <article data-aos="fade-up" data-aos-delay="100"
-            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative overflow-hidden group transition-all duration-300 hover:border-violet/30">
-            <div
-              class="w-12 h-12 rounded-xl bg-violet/10 text-violet border border-violet/25 grid place-items-center mb-6 transition-transform duration-300 group-hover:scale-110">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M4 15l6-6 3 3 7-8" />
-                <path d="M20 4h-5" />
-                <path d="M20 4v5" />
+          <article class="card t-violet">
+            <div class="icon mb-6">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 15l6-6 3 3 7-8" /><path d="M20 4h-5" /><path d="M20 4v5" />
               </svg>
             </div>
-            <h3 class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark">Full-Stack Web Apps</h3>
-            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
-              Engineering responsive applications using React, Next.js, and Node.js with secure authentication, modern
-              state management, and smooth user flows.
-            </p>
+            <h3 class="h3">Full-Stack Web Apps</h3>
+            <p class="lead small">Engineering responsive applications using React, Next.js, and Node.js with secure
+              authentication, modern state management, and smooth user flows.</p>
           </article>
-
-          <article data-aos="fade-up" data-aos-delay="200"
-            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative overflow-hidden group transition-all duration-300 hover:border-amber/30">
-            <div
-              class="w-12 h-12 rounded-xl bg-amber/10 text-amber border border-amber/25 grid place-items-center mb-6 transition-transform duration-300 group-hover:scale-110">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M12 3v18" />
-                <path d="M7 8l5-5 5 5" />
-                <path d="M7 16l5 5 5-5" />
+          <article class="card t-amber">
+            <div class="icon mb-6">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 3v18" /><path d="M7 8l5-5 5 5" /><path d="M7 16l5 5 5-5" />
               </svg>
             </div>
-            <h3 class="font-body font-semibold text-xl mb-3 text-ink dark:text-ink-dark">Performance & Scale</h3>
-            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
-              Auditing performance bottlenecks, optimizing database queries, implementing caching mechanisms, and
-              securing cloud environments for peak loads.
-            </p>
+            <h3 class="h3">Performance &amp; Scale</h3>
+            <p class="lead small">Auditing performance bottlenecks, optimizing database queries, implementing caching
+              mechanisms, and securing cloud environments for peak loads.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ============ 4. JOURNEY ============ -->
-    <section id="journey" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center">
-        <div data-aos="fade-right" class="space-y-6">
+    <section id="journey" class="section">
+      <div class="wrap grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-start">
+        <div class="lg:sticky lg:top-28 space-y-6" data-reveal>
           <div>
-            <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">03 / journey</p>
-            <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight leading-tight">A product-minded developer
-              with shipping experience</h2>
+            <p class="eyebrow">03 / journey</p>
+            <h2 class="h2">A product-minded developer with shipping experience</h2>
           </div>
-          <p class="text-muted dark:text-muted-dark leading-relaxed font-light text-base">
+          <p class="lead" data-words>
             I have worked across startup and scale-up teams, translating complex product goals into clear, optimized
             user interfaces and robust front-end systems.
           </p>
         </div>
 
-        <div class="space-y-6" data-aos="fade-up">
-          <div
-            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative group transition-all duration-300 hover:border-accent/30">
+        <div class="tl">
+          <span class="tl-fill"></span>
+          <article class="card tl-item t-accent">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
               <div>
-                <p class="font-body text-xs text-accent uppercase tracking-wider font-semibold">2022 - Present</p>
-                <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark mt-1">Senior Full-stack Developer
-                </h3>
-                <p class="text-sm text-muted dark:text-muted-dark">Northstar Labs</p>
+                <p class="when">2022 - Present</p>
+                <h3 class="h3" style="margin:.25rem 0 0">Senior Full-stack Developer</h3>
+                <p class="lead small" style="margin:0">Northstar Labs</p>
               </div>
-              <span
-                class="px-3 py-1 border border-accent/20 bg-accent/5 text-accent text-xs font-semibold rounded-xl self-start sm:self-auto">Full-time</span>
+              <span class="chip self-start">Full-time</span>
             </div>
-            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
-              Leading UI implementation for a B2B analytics platform with an emphasis on design consistency, modular
-              components, interaction details, and reduced user churn.
-            </p>
-          </div>
+            <p class="lead small">Leading UI implementation for a B2B analytics platform with an emphasis on design
+              consistency, modular components, interaction details, and reduced user churn.</p>
+          </article>
 
-          <div
-            class="card-lift border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl relative group transition-all duration-300 hover:border-violet/30">
+          <article class="card tl-item t-violet">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
               <div>
-                <p class="font-body text-xs text-violet uppercase tracking-wider font-semibold">2019 - 2022</p>
-                <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark mt-1">Full-stack Developer</h3>
-                <p class="text-sm text-muted dark:text-muted-dark">Studio North</p>
+                <p class="when">2019 - 2022</p>
+                <h3 class="h3" style="margin:.25rem 0 0">Full-stack Developer</h3>
+                <p class="lead small" style="margin:0">Studio North</p>
               </div>
-              <span
-                class="px-3 py-1 border border-violet/20 bg-violet/5 text-violet text-xs font-semibold rounded-xl self-start sm:self-auto">Product
-                Team</span>
+              <span class="chip self-start">Product Team</span>
             </div>
-            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed font-light">
-              Shipped marketing campaigns, optimized e-commerce experiences, and built conversion-focused landing pages
-              with a strong focus on core web vitals, speed, and client conversion.
+            <p class="lead small">Shipped marketing campaigns, optimized e-commerce experiences, and built
+              conversion-focused landing pages with a strong focus on core web vitals, speed, and client conversion.
             </p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="approach"
-      class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
-        <div data-aos="fade-up"
-          class="border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl flex flex-col justify-between h-full group transition-all duration-300 hover:border-accent/20">
-          <div>
-            <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">approach</p>
-            <h2 class="font-body text-3xl font-bold tracking-tight text-ink dark:text-ink-dark">A thoughtful process
-              that keeps quality high without slowing delivery.</h2>
-            <p class="mt-4 text-muted dark:text-muted-dark leading-relaxed font-light text-base">
-              I partner closely with founders, designers, and engineering teams to transform concepts into scalable,
-              production-ready launches while balancing constraints.
-            </p>
-          </div>
-          <div class="mt-8 grid sm:grid-cols-2 gap-4">
-            <div
-              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-5 rounded-lg flex flex-col justify-between hover:border-accent/20 transition-colors duration-300">
-              <h3 class="font-body font-semibold text-accent">1. Align</h3>
-              <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light leading-relaxed">Clarifying user needs,
-                business objectives, and technical constraints early.</p>
-            </div>
-            <div
-              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-5 rounded-lg flex flex-col justify-between hover:border-accent/20 transition-colors duration-300">
-              <h3 class="font-body font-semibold text-accent">2. Build</h3>
-              <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light leading-relaxed">Engineering resilient
-                frontend architectures and optimized API endpoints.</p>
-            </div>
-            <div
-              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-5 rounded-lg flex flex-col justify-between hover:border-accent/20 transition-colors duration-300">
-              <h3 class="font-body font-semibold text-accent">3. Refine</h3>
-              <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light leading-relaxed">Polishing interactions,
-                performance, and responsive details iteratively.</p>
-            </div>
-            <div
-              class="border border-line dark:border-line-dark bg-surface/40 dark:bg-surface-dark/40 p-5 rounded-lg flex flex-col justify-between hover:border-accent/20 transition-colors duration-300">
-              <h3 class="font-body font-semibold text-accent">4. Launch</h3>
-              <p class="mt-2 text-sm text-muted dark:text-muted-dark font-light leading-relaxed">Deploying with
-                automated testing, robust monitoring, and zero downtime.</p>
-            </div>
+    <!-- ============ 5. APPROACH ============ -->
+    <section id="approach" class="section band">
+      <div class="wrap grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-start">
+        <div class="card static" data-reveal>
+          <p class="eyebrow">approach</p>
+          <h2 class="h2" style="font-size:clamp(1.6rem,3vw,2rem)">A thoughtful process that keeps quality high without
+            slowing delivery.</h2>
+          <p class="lead mt-4">I partner closely with founders, designers, and engineering teams to transform concepts
+            into scalable, production-ready launches while balancing constraints.</p>
+          <div class="mt-8 grid sm:grid-cols-2 gap-4" data-stagger>
+            <div class="step"><h3>1. Align</h3><p>Clarifying user needs, business objectives, and technical constraints
+                early.</p></div>
+            <div class="step"><h3>2. Build</h3><p>Engineering resilient frontend architectures and optimized API
+                endpoints.</p></div>
+            <div class="step"><h3>3. Refine</h3><p>Polishing interactions, performance, and responsive details
+                iteratively.</p></div>
+            <div class="step"><h3>4. Launch</h3><p>Deploying with automated testing, robust monitoring, and zero
+                downtime.</p></div>
           </div>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="120"
-          class="border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl flex flex-col justify-between h-full group transition-all duration-300 hover:border-violet/20">
-          <div>
-            <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">Selected impact</p>
-            <p class="text-muted dark:text-muted-dark leading-relaxed font-light mb-6">
-              Measurable improvements across key performance indicators on shipped client platforms.
-            </p>
-          </div>
-          <div class="space-y-5 flex-1 flex flex-col justify-center">
-            <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
-              <span class="text-sm text-muted dark:text-muted-dark">Faster load times</span>
-              <span class="font-body font-semibold text-ink dark:text-ink-dark">30-50%</span>
-            </div>
-            <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
-              <span class="text-sm text-muted dark:text-muted-dark">Accessibility coverage</span>
-              <span class="font-body font-semibold text-ink dark:text-ink-dark">WCAG-compliant</span>
-            </div>
-            <div class="flex items-center justify-between border-b border-line dark:border-line-dark pb-3">
-              <span class="text-sm text-muted dark:text-muted-dark">Design consistency</span>
-              <span class="font-body font-semibold text-ink dark:text-ink-dark font-mono text-xs">Systemized</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-sm text-muted dark:text-muted-dark">Cross-team collaboration</span>
-              <span class="font-body font-semibold text-ink dark:text-ink-dark">High-trust</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
-      <div class="max-w-6xl mx-auto">
-        <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold" data-aos="fade-up">04 /
-          skills</p>
-        <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight mb-12" data-aos="fade-up">What I work with
-        </h2>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <div data-aos="fade-up" data-aos-delay="0"
-            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-accent/30">
-            <div class="flex items-center gap-3 mb-5">
-              <div
-                class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 text-accent grid place-items-center transition-transform duration-300 group-hover:scale-110">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                </svg>
-              </div>
-              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Languages</h3>
-            </div>
-            <div class="flex flex-wrap gap-2 font-body text-xs">
-              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">JavaScript
-                (ES6+)</span>
-              <span
-                class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">TypeScript</span>
-              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">HTML5</span>
-              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">CSS3</span>
-            </div>
-          </div>
-
-          <div data-aos="fade-up" data-aos-delay="100"
-            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-violet/30">
-            <div class="flex items-center gap-3 mb-5">
-              <div
-                class="w-10 h-10 rounded-lg bg-violet/10 border border-violet/20 text-violet grid place-items-center transition-transform duration-300 group-hover:scale-110">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <rect x="3" y="3" width="7" height="7" rx="1" />
-                  <rect x="14" y="3" width="7" height="7" rx="1" />
-                  <rect x="14" y="14" width="7" height="7" rx="1" />
-                  <rect x="3" y="14" width="7" height="7" rx="1" />
-                </svg>
-              </div>
-              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Frameworks</h3>
-            </div>
-            <div class="flex flex-wrap gap-2 font-body text-xs">
-              <span class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">React</span>
-              <span
-                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Next.js</span>
-              <span class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Tailwind
-                CSS</span>
-              <span
-                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Node.js</span>
-            </div>
-          </div>
-
-          <div data-aos="fade-up" data-aos-delay="200"
-            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-amber/30">
-            <div class="flex items-center gap-3 mb-5">
-              <div
-                class="w-10 h-10 rounded-lg bg-amber/10 border border-amber/20 text-amber grid place-items-center transition-transform duration-300 group-hover:scale-110">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path
-                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-              </div>
-              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Tooling</h3>
-            </div>
-            <div class="flex flex-wrap gap-2 font-body text-xs">
-              <span class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Git</span>
-              <span class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Vite</span>
-              <span class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Figma</span>
-              <span
-                class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Storybook</span>
-            </div>
-          </div>
-
-          <div data-aos="fade-up" data-aos-delay="0"
-            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-accent/30">
-            <div class="flex items-center gap-3 mb-5">
-              <div
-                class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 text-accent grid place-items-center transition-transform duration-300 group-hover:scale-110">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-              </div>
-              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Testing</h3>
-            </div>
-            <div class="flex flex-wrap gap-2 font-body text-xs">
-              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">Jest</span>
-              <span
-                class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">Playwright</span>
-              <span class="px-3 py-1.5 border border-accent/20 bg-accent/5 text-accent rounded font-medium">Testing
-                Library</span>
-            </div>
-          </div>
-
-          <div data-aos="fade-up" data-aos-delay="100"
-            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-violet/30">
-            <div class="flex items-center gap-3 mb-5">
-              <div
-                class="w-10 h-10 rounded-lg bg-violet/10 border border-violet/20 text-violet grid place-items-center transition-transform duration-300 group-hover:scale-110">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M4 17V5a2 2 0 0 1 2-2h8.5L20 8.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2z" />
-                  <polyline points="14 3 14 9 20 9" />
-                </svg>
-              </div>
-              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Backend</h3>
-            </div>
-            <div class="flex flex-wrap gap-2 font-body text-xs">
-              <span
-                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Node.js</span>
-              <span
-                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Express</span>
-              <span
-                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Postgres</span>
-              <span
-                class="px-3 py-1.5 border border-violet/20 bg-violet/5 text-violet rounded font-medium">Docker</span>
-            </div>
-          </div>
-
-          <div data-aos="fade-up" data-aos-delay="200"
-            class="card-lift p-8 rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark group transition-all duration-300 hover:border-amber/30">
-            <div class="flex items-center gap-3 mb-5">
-              <div
-                class="w-10 h-10 rounded-lg bg-amber/10 border border-amber/20 text-amber grid place-items-center transition-transform duration-300 group-hover:scale-110">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-              </div>
-              <h3 class="font-body font-semibold text-lg text-ink dark:text-ink-dark">Craft</h3>
-            </div>
-            <div class="flex flex-wrap gap-2 font-body text-xs">
-              <span
-                class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Accessibility</span>
-              <span class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Responsive
-                Design</span>
-              <span
-                class="px-3 py-1.5 border border-amber/20 bg-amber/5 text-amber rounded font-medium">Performance</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 6. PROJECTS ============ -->
-    <section id="projects" class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark">
-      <div class="max-w-6xl mx-auto">
-        <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold" data-aos="fade-up">05 /
-          projects</p>
-        <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight mb-12" data-aos="fade-up">Selected work</h2>
-
-        <div class="projects-grid">
-
-          <article data-aos="zoom-in" data-aos-delay="0"
-            class="card-lift group border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark rounded-xl transition-all duration-300 hover:border-accent/30 hover:shadow-lg">
-            <div class="relative h-44 overflow-hidden rounded-t-xl">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
-                alt="Analytics dashboard interface on a laptop screen"
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-              <span
-                class="absolute bottom-4 left-4 border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur rounded-sm">Fintech
-                Dashboard</span>
-            </div>
-            <div class="p-5">
-              <h3
-                class="font-body font-semibold text-lg mb-2 text-ink dark:text-ink-dark transition-colors group-hover:text-accent">
-                Fintech Dashboard</h3>
-              <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">A real-time analytics
-                dashboard for a payments startup, rebuilt from a legacy stack into a fast, componentized React
-                experience.</p>
-              <div class="flex flex-wrap gap-1.5 font-body text-[11px] mb-4">
-                <span
-                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">React</span>
-                <span
-                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">TypeScript</span>
-                <span
-                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">D3.js</span>
-              </div>
-              <a href="#"
-                class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-light transition-colors group/link">
-                View case study
-                <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover/link:translate-x-1"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <article data-aos="zoom-in" data-aos-delay="100"
-            class="card-lift group border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark rounded-xl transition-all duration-300 hover:border-violet/30 hover:shadow-lg">
-            <div class="relative h-44 overflow-hidden rounded-t-xl">
-              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
-                alt="Modern e-commerce storefront on a device"
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-              <span
-                class="absolute bottom-4 left-4 border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur rounded-sm">Commerce
-                Storefront</span>
-            </div>
-            <div class="p-5">
-              <h3
-                class="font-body font-semibold text-lg mb-2 text-ink dark:text-ink-dark transition-colors group-hover:text-violet">
-                Commerce Storefront</h3>
-              <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">Headless storefront
-                built on Next.js with conversion-focused UX and a sharp lift in Core Web Vitals and page speed.</p>
-              <div class="flex flex-wrap gap-1.5 font-body text-[11px] mb-4">
-                <span
-                  class="px-2.5 py-1 border border-violet/20 bg-violet/5 text-violet dark:text-violet/90 rounded font-medium">Next.js</span>
-                <span
-                  class="px-2.5 py-1 border border-violet/20 bg-violet/5 text-violet dark:text-violet/90 rounded font-medium">Tailwind</span>
-                <span
-                  class="px-2.5 py-1 border border-violet/20 bg-violet/5 text-violet dark:text-violet/90 rounded font-medium">Shopify</span>
-              </div>
-              <a href="#"
-                class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-light transition-colors group/link">
-                View case study
-                <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover/link:translate-x-1"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <article data-aos="zoom-in" data-aos-delay="0"
-            class="card-lift group border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark rounded-xl transition-all duration-300 hover:border-accent/30 hover:shadow-lg">
-            <div class="relative h-44 overflow-hidden rounded-t-xl">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-                alt="Design system components displayed in a clean workspace"
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-              <span
-                class="absolute bottom-4 left-4 border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur rounded-sm">Component
-                Library</span>
-            </div>
-            <div class="p-5">
-              <h3
-                class="font-body font-semibold text-lg mb-2 text-ink dark:text-ink-dark transition-colors group-hover:text-accent">
-                Component Library</h3>
-              <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">An open-source,
-                accessible React component library documented in Storybook and adopted across multiple product teams.
-              </p>
-              <div class="flex flex-wrap gap-1.5 font-body text-[11px] mb-4">
-                <span
-                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">React</span>
-                <span
-                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">Radix</span>
-                <span
-                  class="px-2.5 py-1 border border-accent/20 bg-accent/5 text-accent dark:text-accent-light rounded font-medium">Storybook</span>
-              </div>
-              <a href="#"
-                class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-light transition-colors group/link">
-                View case study
-                <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover/link:translate-x-1"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <article data-aos="zoom-in" data-aos-delay="100"
-            class="card-lift group border border-line dark:border-line-dark overflow-hidden bg-surface dark:bg-surface-dark rounded-xl transition-all duration-300 hover:border-amber/30 hover:shadow-lg">
-            <div class="relative h-44 overflow-hidden rounded-t-xl">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
-                alt="Developer workspace with screens and interface prototypes"
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-              <span
-                class="absolute bottom-4 left-4 border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-body uppercase tracking-[0.2em] text-white backdrop-blur rounded-sm">Booking
-                Platform</span>
-            </div>
-            <div class="p-5">
-              <h3
-                class="font-body font-semibold text-lg mb-2 text-ink dark:text-ink-dark transition-colors group-hover:text-amber">
-                Booking Platform</h3>
-              <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mb-4 font-light">A multi-step booking
-                flow with optimistic UI updates and offline support, built for a travel platform serving hundreds of
-                thousands of users.</p>
-              <div class="flex flex-wrap gap-1.5 font-body text-[11px] mb-4">
-                <span
-                  class="px-2.5 py-1 border border-amber/20 bg-amber/5 text-amber dark:text-amber/90 rounded font-medium">Vue</span>
-                <span
-                  class="px-2.5 py-1 border border-amber/20 bg-amber/5 text-amber dark:text-amber/90 rounded font-medium">Pinia</span>
-                <span
-                  class="px-2.5 py-1 border border-amber/20 bg-amber/5 text-amber dark:text-amber/90 rounded font-medium">PWA</span>
-              </div>
-              <a href="#"
-                class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-light transition-colors group/link">
-                View case study
-                <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover/link:translate-x-1"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 7. CONTACT ============ -->
-    <section id="contact"
-      class="section-anchor py-24 px-6 border-t border-line dark:border-line-dark bg-slate-50/60 dark:bg-white/[0.02]">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.3fr] gap-12 lg:gap-16">
-
-        <div data-aos="fade-right" class="flex flex-col justify-center">
-          <p class="font-body text-xs uppercase tracking-widest text-accent mb-3 font-semibold">06 / contact</p>
-          <h2 class="font-body text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-ink dark:text-ink-dark">Let's
-            build something memorable.</h2>
-          <p class="text-muted dark:text-muted-dark leading-relaxed mb-8 font-light">
-            Whether you need a polished product launch, frontend + backend development, or a full-stack partner to
-            elevate an existing experience, I'd love to help.
+        <div class="card static lg:sticky lg:top-28" data-reveal>
+          <p class="eyebrow">Selected impact</p>
+          <p class="lead mb-6">Measurable improvements across key performance indicators on shipped client platforms.
           </p>
-          <div class="space-y-4 font-body text-sm">
-            <a href="mailto:alex.morgan@example.com"
-              class="inline-flex items-center gap-3 text-ink dark:text-ink-dark hover:text-accent transition-colors group">
-              <span
-                class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 text-accent grid place-items-center transition-transform duration-300 group-hover:scale-110">
-                <i class="fa-regular fa-envelope text-base"></i>
-              </span>
-              <span class="font-medium">alex.morgan@example.com</span>
-            </a>
+          <div class="space-y-5">
+            <div class="row"><span class="lead small" style="margin:0">Faster load times</span><b>30-50%</b></div>
+            <div class="row"><span class="lead small" style="margin:0">Accessibility coverage</span><b>WCAG-compliant</b></div>
+            <div class="row"><span class="lead small" style="margin:0">Design consistency</span><b>Systemized</b></div>
+            <div class="row"><span class="lead small" style="margin:0">Cross-team collaboration</span><b>High-trust</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="flex flex-wrap gap-5 pt-4 border-t border-line dark:border-line-dark">
-              <a href="#"
-                class="inline-flex items-center text-muted dark:text-muted-dark hover:text-accent transition-colors group">
-                <i class="fa-brands fa-github text-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
-                GitHub
-              </a>
-              <a href="#"
-                class="inline-flex items-center text-muted dark:text-muted-dark hover:text-accent transition-colors group">
-                <i
-                  class="fa-brands fa-linkedin text-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
-                LinkedIn
-              </a>
-              <a href="#"
-                class="inline-flex items-center text-muted dark:text-muted-dark hover:text-accent transition-colors group">
-                <i
-                  class="fa-brands fa-twitter text-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
-                Twitter
-              </a>
+    <!-- ============ 6. SKILLS ============ -->
+    <section id="skills" class="section">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>04 / skills</p>
+        <h2 class="h2 mb-12" data-reveal>What I work with</h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger>
+          <div class="card t-accent">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="icon icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg></div>
+              <h3 class="h3" style="margin:0">Languages</h3>
             </div>
+            <div class="chips"><span class="chip">JavaScript (ES6+)</span><span class="chip">TypeScript</span><span class="chip">HTML5</span><span class="chip">CSS3</span></div>
+          </div>
+          <div class="card t-violet">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="icon icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /></svg></div>
+              <h3 class="h3" style="margin:0">Frameworks</h3>
+            </div>
+            <div class="chips"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Tailwind CSS</span><span class="chip">Node.js</span></div>
+          </div>
+          <div class="card t-amber">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="icon icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg></div>
+              <h3 class="h3" style="margin:0">Tooling</h3>
+            </div>
+            <div class="chips"><span class="chip">Git</span><span class="chip">Vite</span><span class="chip">Figma</span><span class="chip">Storybook</span></div>
+          </div>
+          <div class="card t-accent">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="icon icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg></div>
+              <h3 class="h3" style="margin:0">Testing</h3>
+            </div>
+            <div class="chips"><span class="chip">Jest</span><span class="chip">Playwright</span><span class="chip">Testing Library</span></div>
+          </div>
+          <div class="card t-violet">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="icon icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17V5a2 2 0 0 1 2-2h8.5L20 8.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2z" /><polyline points="14 3 14 9 20 9" /></svg></div>
+              <h3 class="h3" style="margin:0">Backend</h3>
+            </div>
+            <div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Postgres</span><span class="chip">Docker</span></div>
+          </div>
+          <div class="card t-amber">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="icon icon-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg></div>
+              <h3 class="h3" style="margin:0">Craft</h3>
+            </div>
+            <div class="chips"><span class="chip">Accessibility</span><span class="chip">Responsive Design</span><span class="chip">Performance</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. PROJECTS ============ -->
+    <section id="projects" class="section band">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>05 / projects</p>
+        <h2 class="h2 mb-12" data-reveal>Selected work</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card project t-accent" data-reveal>
+            <div class="pimg">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+                alt="Analytics dashboard interface on a laptop screen" loading="lazy" />
+              <span class="ptag">Fintech Dashboard</span>
+            </div>
+            <div class="pbody">
+              <h3 class="h3">Fintech Dashboard</h3>
+              <p class="lead small">A real-time analytics dashboard for a payments startup, rebuilt from a legacy stack
+                into a fast, componentized React experience.</p>
+              <div class="chips mb-5"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">D3.js</span></div>
+              <a href="#" class="link">View case study <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="card project t-violet" data-reveal>
+            <div class="pimg">
+              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
+                alt="Modern e-commerce storefront on a device" loading="lazy" />
+              <span class="ptag">Commerce Storefront</span>
+            </div>
+            <div class="pbody">
+              <h3 class="h3">Commerce Storefront</h3>
+              <p class="lead small">Headless storefront built on Next.js with conversion-focused UX and a sharp lift in
+                Core Web Vitals and page speed.</p>
+              <div class="chips mb-5"><span class="chip">Next.js</span><span class="chip">Tailwind</span><span class="chip">Shopify</span></div>
+              <a href="#" class="link">View case study <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="card project t-accent" data-reveal>
+            <div class="pimg">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+                alt="Design system components displayed in a clean workspace" loading="lazy" />
+              <span class="ptag">Component Library</span>
+            </div>
+            <div class="pbody">
+              <h3 class="h3">Component Library</h3>
+              <p class="lead small">An open-source, accessible React component library documented in Storybook and
+                adopted across multiple product teams.</p>
+              <div class="chips mb-5"><span class="chip">React</span><span class="chip">Radix</span><span class="chip">Storybook</span></div>
+              <a href="#" class="link">View case study <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="card project t-amber" data-reveal>
+            <div class="pimg">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+                alt="Developer workspace with screens and interface prototypes" loading="lazy" />
+              <span class="ptag">Booking Platform</span>
+            </div>
+            <div class="pbody">
+              <h3 class="h3">Booking Platform</h3>
+              <p class="lead small">A multi-step booking flow with optimistic UI updates and offline support, built for
+                a travel platform serving hundreds of thousands of users.</p>
+              <div class="chips mb-5"><span class="chip">Vue</span><span class="chip">Pinia</span><span class="chip">PWA</span></div>
+              <a href="#" class="link">View case study <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. CONTACT ============ -->
+    <section id="contact" class="section">
+      <div class="wrap grid md:grid-cols-[1fr_1.3fr] gap-12 lg:gap-16">
+        <div class="flex flex-col justify-center" data-reveal>
+          <p class="eyebrow">06 / contact</p>
+          <h2 class="h2 mb-4">Let's build something memorable.</h2>
+          <p class="lead mb-8">Whether you need a polished product launch, frontend + backend development, or a
+            full-stack partner to elevate an existing experience, I'd love to help.</p>
+
+          <a href="mailto:alex.morgan@example.com" class="mail group">
+            <span class="icon icon-sm"><i class="fa-regular fa-envelope"></i></span>
+            <span>alex.morgan@example.com</span>
+          </a>
+          <div class="socials">
+            <a href="#"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
           </div>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="100"
-          class="border border-line dark:border-line-dark bg-surface dark:bg-surface-dark p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="card static" data-reveal>
           <form class="grid gap-5" onsubmit="return handleContactSubmit(event)">
             <div class="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label for="name"
-                  class="block font-body text-xs text-muted dark:text-muted-dark mb-2 font-medium">Name</label>
-                <input id="name" name="name" type="text" required
-                  class="w-full px-4 py-3 border border-line dark:border-line-dark bg-surface/50 dark:bg-surface-dark/50 rounded-lg focus:border-accent outline-none transition-colors text-sm" />
-              </div>
-              <div>
-                <label for="email"
-                  class="block font-body text-xs text-muted dark:text-muted-dark mb-2 font-medium">Email</label>
-                <input id="email" name="email" type="email" required
-                  class="w-full px-4 py-3 border border-line dark:border-line-dark bg-surface/50 dark:bg-surface-dark/50 rounded-lg focus:border-accent outline-none transition-colors text-sm" />
-              </div>
+              <div><label for="name" class="lbl">Name</label><input id="name" name="name" type="text" required class="field" /></div>
+              <div><label for="email" class="lbl">Email</label><input id="email" name="email" type="email" required class="field" /></div>
             </div>
-            <div>
-              <label for="message"
-                class="block font-body text-xs text-muted dark:text-muted-dark mb-2 font-medium">Message</label>
-              <textarea id="message" name="message" rows="4" required
-                class="w-full px-4 py-3 border border-line dark:border-line-dark bg-surface/50 dark:bg-surface-dark/50 rounded-lg focus:border-accent outline-none transition-colors resize-none text-sm"></textarea>
-            </div>
-            <button type="submit"
-              class="justify-self-start px-6 py-3.5 bg-accent text-[#08080a] font-semibold text-sm rounded-lg shadow-soft hover:bg-accent-light transition-all duration-300 hover:-translate-y-0.5">
-              Send message
-            </button>
-            <p id="formNote" class="text-xs text-muted dark:text-muted-dark hidden">Thanks - this opens your email
-              client to send the message.</p>
+            <div><label for="message" class="lbl">Message</label><textarea id="message" name="message" rows="4" required class="field" style="resize:none"></textarea></div>
+            <button type="submit" class="btn btn-primary justify-self-start">Send message</button>
+            <p id="formNote" class="lead hidden" role="status" style="margin:0;font-size:.8rem">Thanks - this opens your email client to send the message.</p>
           </form>
         </div>
-
       </div>
     </section>
+  </main>
 
-    <!-- ============ 6. FOOTER ============ -->
-    <footer class="py-10 px-6 border-t border-line dark:border-line-dark">
-      <div
-        class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted dark:text-muted-dark">
-        <p class="font-body">© <span id="year"></span> Alex Morgan. Built with modern full-stack web tools.</p>
-        <a href="#home" class="hover:text-accent transition-colors font-body">back to top <i
-            class="fa-solid fa-arrow-up ml-2 text-xs align-middle" aria-hidden="true"></i></a>
-      </div>
-    </footer>
+  <footer class="foot">
+    <div class="wrap flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© <span id="year"></span> Alex Morgan. Built with modern full-stack web tools.</p>
+      <a href="#home">back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+    </div>
+  </footer>
 
-    <!-- AOS script -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <!-- GSAP + ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
-      integrity="sha512-LmQG3Jm3t8Qjq1v6a2O7KqJ3fTjGv7r8wQ+4TnG1QX3gQ6x2Q0zKf6f9Q5y6p4ZPq0F6y1b9v7Q2b6Z3k1L/Q=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-      integrity="sha512-r2m9Q9m9Jx9Q1s3kY5h1jK9b6W0c5V9g3p1Q0v2L9k1M5n8G2p3Q7j6S5p1L2Q6w==" crossorigin="anonymous"
-      referrerpolicy="no-referrer"></script>
-
-    <!-- Vanilla-tilt (card tilt) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <script src="./script.js"></script>
-
+  <!-- Libraries (no integrity attributes: the old hashes did not match and would block the scripts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
