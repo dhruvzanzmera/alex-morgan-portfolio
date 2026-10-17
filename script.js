@@ -129,7 +129,7 @@
   intro
     .from(".line-in", { yPercent: 115, duration: 1, stagger: 0.12 })
     .from(".hero-fade", { y: 24, opacity: 0, duration: 0.8, stagger: 0.09, ...out }, "-=0.7")
-    .from(".hv-card", { y: 70, opacity: 0, duration: 1, stagger: 0.15, ...out }, "-=0.9");
+    .from(".hv-dashboard", { y: 36, opacity: 0, duration: 1, ...out }, "-=0.9");
 
   // Hero content drifts away as you scroll past it
   gsap.to(".hero-inner", { y: -70, opacity: 0.25, ease: "none", scrollTrigger: { trigger: "#home", start: "top top", end: "bottom top", scrub: true } });

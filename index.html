@@ -11,12 +11,6 @@
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#08080a" />
 
-  <link rel="icon" href="./images/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png" />
-  <link rel="manifest" href="./images/site.webmanifest" />
-
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Alex Morgan - Full-stack Developer" />
   <meta property="og:description"
@@ -139,24 +133,59 @@
           </div>
         </div>
 
-        <!-- decorative visual: built only from content already on the page -->
-        <div class="hv hidden lg:block" aria-hidden="true">
-          <div class="hv-card hv-main" data-tilt>
-            <p class="eyebrow">Currently</p>
-            <p class="hv-title">Senior Full-stack Developer</p>
-            <p class="lead" style="margin:.25rem 0 0;font-size:.875rem">Northstar Labs · 2022 - Present</p>
-          </div>
-          <div class="hv-card hv-code" data-tilt>
-            <pre><span class="c-mute">GET</span> /api/alex-morgan
-{
+        <!-- Profile and engineering snapshot -->
+        <div class="hv hidden lg:block">
+          <div class="hv-dashboard" data-tilt>
+            <div class="hv-dashboard-head">
+              <div class="hv-window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="hv-dashboard-label">ENGINEERING PROFILE / 01</span>
+              <span class="hv-online"><span class="dot"></span> AVAILABLE</span>
+            </div>
+
+            <div class="hv-profile">
+              <div class="hv-avatar" aria-hidden="true">AM</div>
+              <div class="hv-profile-copy">
+                <p class="eyebrow">Currently</p>
+                <p class="hv-title">Senior Full-stack Developer</p>
+                <p class="hv-company">Northstar Labs <span>·</span> 2022 – Present</p>
+              </div>
+            </div>
+
+            <div class="hv-divider"></div>
+
+            <div class="hv-code-panel">
+              <div class="hv-code-head">
+                <span><b>GET</b> /api/alex-morgan</span>
+                <i class="fa-solid fa-code" aria-hidden="true"></i>
+              </div>
+              <pre>{
   <span class="c-key">"role"</span>: <span class="c-str">"Full-stack Developer"</span>,
   <span class="c-key">"experience"</span>: <span class="c-str">"4+ years"</span>,
   <span class="c-key">"available"</span>: <span class="c-str">true</span>
 }</pre>
-          </div>
-          <div class="hv-card hv-stat" data-tilt>
-            <p class="hv-big">30-50%</p>
-            <p class="lead" style="margin:0;font-size:.8rem">Faster load times</p>
+            </div>
+
+            <div class="hv-metrics">
+              <div class="hv-metric">
+                <span class="hv-metric-value">30–50%</span>
+                <span class="hv-metric-label">Faster load times</span>
+              </div>
+              <div class="hv-metric">
+                <span class="hv-metric-value">30+</span>
+                <span class="hv-metric-label">Projects shipped</span>
+              </div>
+              <div class="hv-metric">
+                <span class="hv-metric-value">4+</span>
+                <span class="hv-metric-label">Years building</span>
+              </div>
+            </div>
+
+            <div class="hv-stack">
+              <span>CORE STACK</span>
+              <div class="hv-stack-list">
+                <span>React</span><span>TypeScript</span><span>Node.js</span><span>AWS</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
