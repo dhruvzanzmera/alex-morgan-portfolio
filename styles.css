@@ -224,9 +224,12 @@ body {
 .btn { border-radius: .75rem; }
 .btn-primary { background: #285c3b; color: #fff; box-shadow: 0 10px 24px rgba(38, 92, 59, .2); }
 .btn-primary:hover { background: #1e4c31; }
-.hero { min-height: min(880px, 100svh); display: flex; align-items: center; padding: 9rem 0 6rem; }
+.hero { min-height: 100svh; display: flex; align-items: center; padding: 7rem 0 2.5rem; }
 .hero-inner { grid-template-columns: minmax(0, 1.08fr) minmax(370px, .92fr); gap: clamp(3rem, 7vw, 7rem); }
-.h1 { max-width: 11ch; font-size: clamp(3.2rem, 6.4vw, 6.2rem); line-height: .99; letter-spacing: -.07em; }
+.h1 { max-width: none; font-size: clamp(3rem, 4.5vw, 4.5rem); line-height: 1; letter-spacing: -.07em; }
+.hero-role { margin-top: .85rem; }
+.hero-summary { margin-top: 1rem; max-width: 32rem; font-size: 1rem; }
+.hero .chips { margin-top: 1rem; }
 .hero .stat { border-left: 0; border-top: 1px solid var(--line); padding: .85rem .6rem 0 0; }
 .hv { display: flex; align-items: center; justify-content: center; height: auto; min-height: 0; max-width: 39rem; }
 
@@ -437,14 +440,14 @@ body {
   .hero { min-height: auto; }
   .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(300px, .8fr); gap: 2.5rem; }
   .hv { display: flex; margin: 0 auto; }
-  .h1 { font-size: clamp(3.1rem, 6.5vw, 5rem); }
+  .h1 { font-size: clamp(3rem, 5vw, 4.5rem); }
 }
 
 @media (max-width: 767px) {
   .nav { top: .55rem; left: .5rem; right: .5rem; width: auto; transform: none; }
-  .hero { min-height: auto; padding: 8rem 0 4rem; }
+  .hero { min-height: 100svh; padding: 6.5rem 0 2rem; }
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .h1 { max-width: 12ch; font-size: clamp(3rem, 12vw, 5rem); }
+  .h1 { font-size: clamp(2.75rem, 10vw, 4rem); }
   .hv { display: none; }
 }
 
