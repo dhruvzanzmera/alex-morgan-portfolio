@@ -22,6 +22,7 @@ A responsive, single-page portfolio for Alex Morgan, a full-stack developer. The
 - GSAP and ScrollTrigger entrance, scroll, counter, timeline, and ticker animations
 - Vanilla Tilt interaction on the hero profile dashboard when supported
 - Reduced-motion support and static fallbacks when animation libraries are unavailable
+- Restrained blue-accent visual system with distinct light-theme cards, responsive layouts, and subtle hover states
 - Contact form opens the visitor's email client; it does not submit to a server
 - SEO metadata, Person structured data, and an SVG favicon for the browser tab
 
