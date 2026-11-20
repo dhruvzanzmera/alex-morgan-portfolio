@@ -23,7 +23,7 @@ A responsive, single-page portfolio for Alex Morgan, a full-stack developer. The
 - Vanilla Tilt interaction on the hero profile dashboard when supported
 - Reduced-motion support and static fallbacks when animation libraries are unavailable
 - Contact form opens the visitor's email client; it does not submit to a server
-- SEO metadata and Person structured data
+- SEO metadata, Person structured data, and an SVG favicon for the browser tab
 
 ## Built With
 
@@ -48,6 +48,10 @@ The page loads several libraries, fonts, icons, and project images from external
 ## Contact Form
 
 The contact form uses `mailto:alex.morgan@example.com` to prepare a message in the visitor's default email client. No form data is sent to or stored by a backend.
+
+## SEO Before Deployment
+
+The page includes a title, meta description, indexing directives, Open Graph and Twitter text metadata, and Person structured data. Before publishing, replace the example contact details and add the real site URL (canonical and `og:url`), an absolute social preview image, and deployment-specific `robots.txt` and `sitemap.xml`. Verify the live page with search-engine webmaster tools.
 
 ## License
 
