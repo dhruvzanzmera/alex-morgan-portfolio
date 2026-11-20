@@ -503,16 +503,16 @@ body {
 
 body {
   background:
-    radial-gradient(ellipse at 4% 12%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 34rem),
-    radial-gradient(ellipse at 96% 42%, color-mix(in srgb, var(--accent) 4%, transparent), transparent 38rem),
-    var(--bg);
+    radial-gradient(ellipse at 4% 12%, color-mix(in srgb, var(--accent) 11%, transparent), transparent 34rem),
+    radial-gradient(ellipse at 96% 42%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 38rem),
+    linear-gradient(145deg, var(--bg), color-mix(in srgb, var(--surface) 80%, var(--accent)) 48%, var(--bg));
 }
 
 .dark body {
   background:
-    radial-gradient(ellipse at 4% 12%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 34rem),
-    radial-gradient(ellipse at 96% 42%, color-mix(in srgb, var(--accent) 3%, transparent), transparent 38rem),
-    var(--bg);
+    radial-gradient(ellipse at 4% 12%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 34rem),
+    radial-gradient(ellipse at 96% 42%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 38rem),
+    linear-gradient(145deg, var(--bg), color-mix(in srgb, var(--surface) 82%, var(--accent)) 48%, var(--bg));
 }
 
 .grid-canvas {
@@ -536,16 +536,16 @@ body {
 .dark #projects,
 .dark #approach {
   background:
-    radial-gradient(ellipse at 95% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 32rem),
-    linear-gradient(140deg, color-mix(in srgb, var(--surface) 66%, var(--bg)), var(--bg));
+    radial-gradient(ellipse at 95% 0%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 32rem),
+    linear-gradient(140deg, color-mix(in srgb, var(--surface) 78%, var(--accent)), var(--bg) 72%);
 }
 
 .hero {
   min-height: min(52rem, 100svh);
   padding: 8rem 0 5rem;
   background:
-    radial-gradient(ellipse at 82% 35%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 27rem),
-    radial-gradient(ellipse at 10% 12%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 30rem);
+    radial-gradient(ellipse at 82% 35%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 27rem),
+    radial-gradient(ellipse at 10% 12%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 30rem);
 }
 
 .hero-inner { gap: clamp(2.5rem, 6vw, 6rem); }
@@ -563,12 +563,13 @@ body {
 .nav {
   border-color: color-mix(in srgb, var(--line) 85%, transparent);
   border-radius: 1.1rem;
+  background: linear-gradient(110deg, color-mix(in srgb, var(--surface) 94%, var(--accent)), var(--surface));
   box-shadow: 0 12px 35px rgba(28, 54, 35, .1);
 }
 
 .dark .nav {
   border-color: var(--line);
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  background: linear-gradient(110deg, color-mix(in srgb, var(--surface) 95%, var(--accent)), var(--surface));
   box-shadow: 0 12px 35px rgba(0, 0, 0, .35);
 }
 
@@ -577,10 +578,48 @@ body {
 .icon-btn { transition: color .22s ease, border-color .22s ease, background .22s ease, transform .22s ease; }
 .icon-btn:hover { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); transform: translateY(-2px); }
 
+#themeToggle {
+  position: relative;
+  width: 2.8rem;
+  height: 2.8rem;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
+  border-radius: .95rem;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 78%, var(--accent)), var(--surface) 72%);
+  color: var(--accent-text);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 16%, transparent), inset 0 1px rgba(255, 255, 255, .7);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease;
+}
+
+#themeToggle i {
+  grid-area: 1 / 1;
+  font-size: 1rem;
+  animation: theme-icon-in .32s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+#themeToggle i.hidden { display: none !important; }
+
+#themeToggle:hover {
+  transform: translateY(-2px) rotate(4deg);
+  border-color: color-mix(in srgb, var(--accent) 70%, var(--line));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 25%, var(--surface)), var(--surface));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+
+.dark #themeToggle {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 22%, var(--surface)), var(--surface) 75%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .34), inset 0 1px rgba(255, 255, 255, .08);
+}
+
+.dark #themeToggle:hover {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 34%, var(--surface)), var(--surface));
+}
+
 .card {
   border-color: color-mix(in srgb, var(--line) 90%, var(--accent) 10%);
   border-radius: 1.25rem;
-  background: linear-gradient(145deg, var(--surface), color-mix(in srgb, var(--surface) 91%, var(--accent)));
+  background: linear-gradient(145deg, var(--surface), color-mix(in srgb, var(--surface) 88%, var(--accent)));
   box-shadow: var(--shadow);
   transition: transform .32s cubic-bezier(.2, .8, .2, 1), border-color .32s ease, box-shadow .32s ease, background .32s ease;
 }
@@ -613,14 +652,14 @@ body {
 .hv-dashboard {
   border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
   background:
-    radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 58%),
+    radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
     linear-gradient(145deg, color-mix(in srgb, var(--accent) 7%, var(--surface)), var(--surface) 65%);
   box-shadow: 0 35px 85px -48px color-mix(in srgb, var(--accent) 34%, transparent);
 }
 
 .dark .hv-dashboard {
   background:
-    radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 58%),
+    radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 58%),
     linear-gradient(145deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), var(--surface) 65%);
 }
 
@@ -731,6 +770,15 @@ body {
 
 .hv-code-panel .c-str,
 .dark .hv-code-panel .c-str { color: var(--accent-text); }
+.hv-online {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+
+@keyframes theme-icon-in {
+  from { opacity: 0; transform: rotate(-45deg) scale(.55); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
+}
 
 @media (max-width: 1023px) {
   .hero { min-height: auto; }
@@ -755,9 +803,12 @@ body {
   .step,
   .nav-links a,
   .icon-btn,
+  #themeToggle,
   .socials a,
-  .foot a {
+  .foot a,
+  #themeToggle i {
     transition: none;
+    animation: none;
   }
 
   .card:hover,
@@ -766,6 +817,7 @@ body {
   .step:hover,
   .nav-links a:hover,
   .icon-btn:hover,
+  #themeToggle:hover,
   .socials a:hover,
   .foot a:hover {
     transform: none;

@@ -1,5 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#08080a" />
-  <text x="32" y="43" fill="#c5a880" font-family="Arial, sans-serif" font-size="27" font-weight="700"
-    text-anchor="middle">AM</text>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#4b6fae" />
+      <stop offset="1" stop-color="#0e1520" />
+    </linearGradient>
+    <linearGradient id="monogram" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#ffffff" />
+      <stop offset="1" stop-color="#dce8fa" />
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="62" height="62" rx="17" fill="url(#background)" />
+  <rect x="1" y="1" width="62" height="62" rx="17" fill="none" stroke="#88a7dc" stroke-opacity=".65" />
+  <text x="32" y="42" fill="url(#monogram)" font-family="Arial, sans-serif" font-size="24" font-weight="700"
+    letter-spacing="-1" text-anchor="middle">AM</text>
+  <circle cx="51" cy="13" r="2.5" fill="#dce8fa" />
 </svg>

@@ -17,6 +17,9 @@
     const dark = root.classList.contains("dark");
     $("#iconSun").classList.toggle("hidden", !dark);   // dark mode shows the sun (click for light)
     $("#iconMoon").classList.toggle("hidden", dark);
+    $("#themeToggle").setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    $("#themeToggle").setAttribute("aria-pressed", String(dark));
+    $("#themeToggle").title = dark ? "Switch to light mode" : "Switch to dark mode";
     readParticleColor();
   };
   $("#themeToggle").addEventListener("click", () => {
